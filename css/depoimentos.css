@@ -44,9 +44,22 @@
 }
 
 .testimonials-section__cards {
+  --testimonials-gap: 44px;
+  --testimonials-per-view: 3;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 44px;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(
+    (100% - (var(--testimonials-gap) * (var(--testimonials-per-view) - 1))) / var(--testimonials-per-view)
+  );
+  gap: var(--testimonials-gap);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.testimonials-section__cards::-webkit-scrollbar {
+  display: none;
 }
 
 .testimonials-section__arrow {
@@ -85,6 +98,7 @@
   border-radius: 4px;
   background-color: #f3f4f5;
   box-shadow: 0 8px 16px rgba(86, 3, 3, 0.12);
+  scroll-snap-align: start;
 }
 
 .testimonial-card__author {
@@ -137,6 +151,46 @@
   width: min(100%, 222px);
 }
 
+.testimonials-section__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  margin: 38px auto 0;
+  gap: 13px;
+}
+
+.testimonials-section__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  appearance: none;
+  background-color: #f4ded8;
+  cursor: pointer;
+  opacity: 0.72;
+  transition: background-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.testimonials-section__dot--active {
+  width: 14px;
+  height: 14px;
+  opacity: 1;
+}
+
+.testimonials-section__dot:hover,
+.testimonials-section__dot:focus-visible {
+  background-color: #ffffff;
+  opacity: 1;
+  transform: scale(1.18);
+}
+
+.testimonials-section__dot:focus-visible {
+  outline: 2px solid #f4ded8;
+  outline-offset: 4px;
+}
+
 @media (max-width: 900px) {
   .testimonials-section__carousel {
     grid-template-columns: 1fr;
@@ -147,14 +201,8 @@
   }
 
   .testimonials-section__cards {
-    grid-template-columns: repeat(3, minmax(240px, 1fr));
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x proximity;
-  }
-
-  .testimonial-card {
-    scroll-snap-align: start;
+    --testimonials-gap: 28px;
+    --testimonials-per-view: 2;
   }
 }
 
@@ -168,7 +216,6 @@
   }
 
   .testimonials-section__cards {
-    grid-template-columns: 1fr;
-    overflow-x: visible;
+    --testimonials-per-view: 1;
   }
 }
