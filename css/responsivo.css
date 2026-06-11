@@ -41,14 +41,11 @@
   }
 
   .events-section__cards {
-    grid-template-columns: repeat(3, minmax(210px, 1fr));
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x proximity;
+    --events-gap: 28px;
   }
 
   .event-card {
-    scroll-snap-align: start;
+    grid-template-columns: minmax(220px, 44%) minmax(0, 1fr);
   }
 }
 
@@ -59,42 +56,6 @@
     line-height: 1.35;
   }
 
-  .events-section__cta-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "intro link"
-      "outro link";
-    align-items: center;
-    width: min(100%, 760px);
-    gap: 8px 44px;
-  }
-
-  .events-section__cta-part--intro {
-    grid-area: intro;
-    justify-self: start;
-    margin: 0;
-  }
-
-  .events-section__cta-part--outro {
-    grid-area: outro;
-    justify-self: start;
-    margin: 0;
-  }
-
-  .events-section__cta-link {
-    grid-area: link;
-    justify-self: end;
-    margin: 0;
-  }
-
-  .events-section__cta-part {
-    height: clamp(21px, 2.6vw, 25px);
-  }
-
-  .events-section__cta-part--link {
-    height: clamp(21px, 2.6vw, 25px);
-  }
 }
 
 @media (max-width: 760px) {
@@ -194,6 +155,14 @@
     transform: translateX(50%);
   }
 
+  .hero--slide-1 .hero__banner-text {
+    transform: translateX(50%) translateY(8px);
+  }
+
+  .hero--slide-2 .hero__banner-text {
+    transform: translateX(50%) translateY(-6px);
+  }
+
   .btn-custom {
     top: auto;
     right: 50%;
@@ -216,12 +185,16 @@
   }
 
   .events-section__cards {
+    --events-gap: 24px;
+  }
+
+  .event-card {
     grid-template-columns: 1fr;
-    overflow-x: visible;
-    gap: 34px;
+    gap: 18px;
   }
 
   .event-card__image {
+    grid-row: auto;
     aspect-ratio: 1 / 1;
   }
 
@@ -233,27 +206,8 @@
     min-height: 132px;
   }
 
-  .events-section__cta-bg {
-    object-position: center;
-  }
-
-  .events-section__cta-content {
-    width: 92%;
-    gap: 8px;
-  }
-
-  .events-section__cta-part--intro,
-  .events-section__cta-part--outro {
-    flex-basis: 100%;
-    margin: 0 auto;
-  }
-
   .events-section__cta-link {
     margin: 0;
-  }
-
-  .events-section__cta-part--link {
-    height: 20px;
   }
 }
 
@@ -339,11 +293,4 @@
     min-height: 140px;
   }
 
-  .events-section__cta-content {
-    gap: 10px;
-  }
-
-  .events-section__cta-part--link {
-    height: 19px;
-  }
 }

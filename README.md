@@ -1,24 +1,31 @@
 # Site De La Flor
 
-Site institucional e comercial da **De La Flor**, marca de alfajores e lembranças personalizadas criada a partir de uma receita de família peruana, hoje conduzida por Magáli De La Flor e Andrés.
+Site institucional da **De La Flor**, marca de alfajores e lembranças personalizadas com identidade peruana e produção local em Belo Horizonte.
 
-O projeto está organizado como um site estático em **HTML, CSS e JavaScript puro**, sem framework. A estrutura foi pensada para preservar simplicidade, facilitar manutenção e permitir publicação em hospedagens estáticas.
+O projeto é um site estático em **HTML, CSS e JavaScript puro**, sem framework ou empacotador. A arquitetura prioriza simplicidade, desempenho e compatibilidade com hospedagens estáticas.
 
 ## Objetivo
 
-Apresentar a história da De La Flor, divulgar serviços para eventos e encomendas, destacar produtos, reunir fotos, depoimentos e canais oficiais de contato.
+Apresentar a De La Flor, seus serviços para eventos, produtos para compra online, depoimentos e canais de contato diretos via WhatsApp e e-mail.
 
-Estrutura sugerida para a página inicial:
+A página inicial atual inclui:
 
-- Banner principal;
-- chamada para alfajores e encomendas;
-- Nossa História;
-- Serviços / Momentos especiais;
-- Produtos / Loja;
-- Depoimentos;
-- Instagram;
-- WhatsApp / Encomendas;
-- rodapé com crédito de layout/design.
+- banner principal com chamada para compra;
+- sessão de eventos e serviços;
+- histórico da marca;
+- galeria de fotos;
+- vitrine de produtos;
+- depoimentos de clientes;
+- formulário de contato;
+- rodapé com informações e créditos.
+
+## Melhorias aplicadas
+
+- SEO básico com `title`, `description`, `canonical`, Open Graph e Twitter Cards.
+- Acessibilidade reforçada em formulários com labels ocultos e `aria-hidden` em elementos decorativos.
+- Carregamento assíncrono de CSS não crítico para reduzir bloqueio de renderização.
+- Substituição do Font Awesome por ícones SVG inline no formulário.
+- Uso de `font-display: swap` nas fontes carregadas.
 
 ## Estrutura do projeto
 
@@ -26,177 +33,68 @@ Estrutura sugerida para a página inicial:
 .
 ├── index.html
 ├── robots.txt
-├── favicon.ico
+├── sitemap.xml
 ├── README.md
 ├── css/
-│   ├── reset.css
-│   ├── variaveis.css
-│   ├── tipografia.css
-│   ├── globais.css
 │   ├── cabecalho.css
-│   ├── secoes.css
+│   ├── compra-on-line.css
+│   ├── depoimentos.css
+│   ├── ficamos.css
 │   ├── formulario.css
-│   ├── rodape.css
+│   ├── fotos.css
+│   ├── nossa-historia.css
+│   ├── principal.css
+│   ├── reset.css
 │   ├── responsivo.css
-│   └── principal.css
+│   ├── rodape.css
+│   ├── secoes.css
+│   ├── tipografia.css
+│   └── variaveis.css
 ├── js/
-│   ├── main.js
 │   ├── navegacao.js
-│   ├── carrosseis.js
-│   ├── formulario-contato.js
-│   ├── whatsapp.js
 │   └── dados/
-│       ├── campos-contato.js
+│       ├── compre-on-line.js
 │       ├── depoimentos.js
-│       ├── galeria.js
-│       ├── links.js
-│       ├── produtos.js
-│       └── servicos.js
+│       ├── eventos.js
+│       └── hero.js
 ├── fontes/
 └── imagens/
     ├── banner-principal/
     ├── banners/
-    ├── depoimentos/
     ├── galeria/
-    ├── historia/
-    ├── logo/
-    ├── produtos/
-    └── servicos/
+    │   ├── compre-on-line/
+    │   ├── depoimentos/
+    │   ├── eventos/
+    │   ├── ficamos-felizes/
+    │   ├── fotos/
+    │   ├── nossa-historia/
+    │   └── rodape/
+    └── logo/
 ```
 
-## Conteúdo disponível
+## Como testar
 
-O briefing do projeto indica os seguintes materiais:
+1. Abra `index.html` em um navegador moderno.
+2. Ou use um servidor estático local, por exemplo:
 
-- pasta principal do Google Drive do projeto;
-- textos institucionais em `TextosSeções`;
-- layout base em `Layout_SiteDeLaFlor`;
-- paleta oficial extraída do Adobe Color;
-- fontes usadas no layout;
-- links oficiais de Instagram, WhatsApp e crédito de layout;
-- fotos de história, galeria, banner principal e serviços já organizadas no projeto local.
-
-### Links oficiais
-
-- Instagram: `https://www.instagram.com/alfajordelaflor/`
-- WhatsApp: `https://wa.me/message/VJUYK3MDBN3VM1`
-- Crédito de layout/design: `https://www.instagram.com/estudiofablo/`
-
-Observação importante: o briefing orienta **nunca usar o Instagram antigo**.
-
-## Identidade visual
-
-Paleta oficial de referência:
-
-| Nome | HEX | Uso sugerido |
-
-|---|---:|---|
-| Verde oliva escuro | `#4F5902` | detalhes naturais, ícones e apoios visuais |
-| Laranja intenso | `#F27405` | CTAs, compra, orçamento e ações importantes |
-| Rosa claro / nude | `#F2C7BD` | fundos suaves, cards e áreas delicadas |
-| Coral rosado | `#F27272` | destaques, botões secundários e chamadas visuais |
-| Vinho / marsala | `#8C4949` | identidade principal, títulos e rodapé |
-| Cinza claro | `#F2F2F2` | fundos neutros, formulários e separadores |
-| Off-white rosado | `#F1EAEA` | fundo geral, cards e blocos claros |
-
-Variáveis funcionais sugeridas:
-
-```css
-:root {
-  --color-primary: #8C4949;
-  --color-secondary: #F27272;
-  --color-accent: #F27405;
-  --color-support: #4F5902;
-
-  --color-background: #F1EAEA;
-  --color-background-light: #F2F2F2;
-  --color-surface: #F2C7BD;
-
-  --color-text: #8C4949;
-  --color-text-dark: #4F5902;
-  --color-text-inverse: #FFFFFF;
-}
+```bash
+# no Windows com Python 3
+python -m http.server 8000
 ```
 
-Use o laranja com moderação, principalmente em ações como comprar, enviar e solicitar orçamento. O vinho/marsala deve funcionar como cor principal da identidade.
+1. Acesse `http://localhost:8000`.
 
-## Fontes
+## Notas de publicação
 
-Fontes citadas no relatório do layout:
+- O site está preparado para hospedagem estática.
+- Preserve a hierarquia de imagens e CSS ao mover o projeto.
+- Caso adicione novas fontes, confirme licenças antes de publicar.
 
-- Lato Regular;
-- Lato Bold;
-- Myriad Pro;
-- Tenor Sans.
+## Links oficiais
 
-A pasta de layout no Drive contém arquivos de fonte associados ao projeto. Antes de publicar, distribuir ou embutir fontes no site, confirme as licenças de uso. Não compartilhe arquivos de fonte fora do ambiente autorizado do projeto.
-
-## Textos base
-
-### Nossa História
-
-A De La Flor nasceu de uma receita de família, passada de mãe para filha, e de uma tradição que atravessou fronteiras. A história começou com Olga De La Flor, peruana que trouxe para Belo Horizonte os sabores e memórias de sua terra natal, entre eles o alfajor peruano.
-
-Anos depois, Magáli De La Flor transformou esse legado em negócio, mantendo viva a receita original e o carinho de cada preparo. Hoje, ao lado de Andrés, a marca une tradição peruana e afeto mineiro para criar alfajores que celebram encontros e tornam momentos especiais mais memoráveis.
-
-Link citado para a matéria do Estado de Minas:
-
-```text
-https://www.em.com.br/degusta/2026/05/7416218-receitas-de-familia-se-transformam-em-produtos-com-historias-e-significados.html
-```
-
-### Serviços
-
-Serviços descritos no briefing:
-
-- Casamentos;
-- 15 anos;
-- Bodas;
-- Nascimento e Batizado;
-- Formatura;
-- Datas Comemorativas;
-- Eventos Corporativos;
-- Lembranças Personalizadas;
-- Ações de Branding.
-
-Cada serviço deve ter, quando possível:
-
-- título claro;
-- descrição curta;
-- imagem associada;
-- CTA para orçamento ou WhatsApp.
-
-### Depoimentos
-
-O material atual parece ser um modelo de organização, não uma lista final de depoimentos. Para publicar, coletar:
-
-- texto do depoimento;
-- nome da pessoa;
-- identificação, como cliente, cerimonial, noiva ou debutante;
-- Instagram, quando autorizado;
-- print ou evidência separada;
-- confirmação de permissão de publicação.
-
-## Imagens
-
-Pastas locais de imagens já previstas:
-
-- `imagens/banner-principal/`;
-- `imagens/banners/`;
-- `imagens/depoimentos/`;
-- `imagens/galeria/`;
-- `imagens/historia/`;
-- `imagens/logo/`;
-- `imagens/produtos/`;
-- `imagens/servicos/`.
-
-Recomendações:
-
-- usar `.webp` para imagens finais do site quando possível;
-- manter textos alternativos descritivos;
-- separar versões desktop e mobile de banners;
-- não apagar arquivos originais sem confirmação;
-- revisar imagens ausentes antes da publicação.
+- Instagram: <https://www.instagram.com/alfajordelaflor/>
+- WhatsApp: <https://wa.me/message/VJUYK3MDBN3VM1/>
+- Crédito de layout/design: <https://www.instagram.com/estudiofablo/>
 
 ## Desenvolvimento
 

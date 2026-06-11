@@ -48,6 +48,7 @@
   display: block;
   height: 100%;
   object-fit: cover;
+  transition: filter 420ms ease, opacity 420ms ease, object-position 420ms ease, transform 420ms ease;
 }
 
 .hero__banner--momentos {
@@ -73,6 +74,7 @@
   max-width: 38%;
   height: auto;
   z-index: 2;
+  transition: filter 420ms ease, transform 420ms ease;
 }
 
 .btn-custom {
@@ -100,7 +102,37 @@
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
-  transition: border-color 180ms ease;
+  transition: border-color 180ms ease, background-color 420ms ease, transform 420ms ease;
+}
+
+.hero--slide-1 .hero__banner--momentos {
+  object-position: center center;
+  filter: brightness(0.94) saturate(1.08);
+  transform: scale(1.02);
+}
+
+.hero--slide-1 .hero__banner--lateral {
+  opacity: 0.9;
+  filter: saturate(1.1);
+}
+
+.hero--slide-1 .hero__banner-text {
+  transform: translateY(8px);
+}
+
+.hero--slide-2 .hero__banner--momentos {
+  object-position: 72% center;
+  filter: brightness(0.9) contrast(1.04);
+  transform: scale(1.035);
+}
+
+.hero--slide-2 .hero__banner--lateral {
+  opacity: 0.64;
+}
+
+.hero--slide-2 .hero__banner-text {
+  filter: drop-shadow(0 8px 16px rgba(86, 3, 3, 0.2));
+  transform: translateY(-6px);
 }
 
 .btn-custom__text {
