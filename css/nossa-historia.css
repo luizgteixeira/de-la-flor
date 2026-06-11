@@ -143,12 +143,12 @@
   left: 65.80%;
   top: 88.07%;
   z-index: 3;
-  width: 25.22%;
+  width: 28%;
   margin: 0;
   font-family: "Lato", Arial, sans-serif;
-  font-size: clamp(8px, 0.92vw, 14px);
+  font-size: clamp(12px, 1.12vw, 18px);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.28;
   color: #ffffff;
 }
 
@@ -228,7 +228,9 @@
   }
 
   .history-section__article-text {
-    font-size: 13px;
+    width: min(100%, 420px);
+    font-size: 16px;
+    line-height: 1.32;
     text-align: center;
   }
 }
@@ -240,5 +242,9 @@
 
   .history-section__stage {
     padding-inline: 16px;
+  }
+
+  .history-section__article-text {
+    font-size: 15px;
   }
 }
