@@ -1,0 +1,13 @@
+:root {
+  --color-header-bg: #964f4c;
+  --color-events-text: #7b2926;
+  --color-history-bg: #8b504f;
+  --color-history-text: #f4ece5;
+  --color-history-link: #fde6d9;
+  --color-hero-bg: #c8b7af;
+  --color-events-cta-bg: #ef736b;
+  --color-white: #ffffff;
+
+  --font-body: "Lato", Arial, sans-serif;
+  --font-display: "Tenor Sans", serif;
+}

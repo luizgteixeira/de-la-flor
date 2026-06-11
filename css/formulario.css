@@ -1,0 +1,234 @@
+/* Área geral da seção */
+.secao-fale-conosco {
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px 20px 70px;
+  background-color: #f2f2f2;
+}
+
+/* Título principal */
+.secao-fale-conosco h2 {
+  opacity: 0.800;
+  font-size: 34px;
+  text-transform: uppercase;
+  color: #560303;
+  font-weight: 400;
+  font-family: "Tenor Sans", sans-serif;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+/* Texto abaixo do título */
+.texto-fale-conosco {
+  opacity: 0.702;
+  font-size: 19px;
+  color: #560303;
+  font-family: "Myriad Pro", Arial, sans-serif;
+  text-align: center;
+  line-height: 1.25;
+  margin: 0 auto 52px;
+}
+
+/* Formulário em duas colunas */
+.form-contato {
+  width: 100%;
+  max-width: 840px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(280px, 357px) minmax(280px, 360px);
+  justify-content: center;
+  column-gap: clamp(40px, 8vw, 120px);
+  align-items: start;
+}
+
+/* Colunas */
+.coluna-form {
+  width: 100%;
+}
+
+/* Campo com ícone */
+.campo-icone {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+/* Ícone redondo */
+.campo-icone i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background-color: #560303;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Inputs */
+.campo-icone input {
+  width: 100%;
+  height: 32px;
+  padding-left: 32px;
+
+  border: none;
+  border-bottom: 1px solid rgba(86, 3, 3, 0.65);
+  background: transparent;
+  outline: none;
+
+  font-size: 15px;
+  color: #560303;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+/* Texto dos placeholders */
+.campo-icone input::placeholder,
+textarea::placeholder {
+  font-size: 15px;
+  color: #560303;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+  opacity: 0.5;
+}
+
+/* Quando clica no input */
+.campo-icone input:focus {
+  border-bottom-color: #560303;
+}
+
+/* Caixa de comentário */
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 26px 18px;
+
+  border: 1px solid #560303;
+  border-radius: 16px;
+  background-color: transparent;
+  outline: none;
+  resize: none;
+
+  font-size: 15px;
+  color: #560303;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+/* Checkboxes */
+.opcoes-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 12px 0 45px;
+}
+
+.opcoes-form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 10px;
+  color: #560303;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+}
+
+.opcoes-form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #560303;
+  cursor: pointer;
+}
+
+/* Botão */
+.form-contato button {
+  display: block;
+  width: 184px;
+  height: 46px;
+  margin: 0 auto;
+
+  border: 1px solid #560303;
+  border-radius: 23px;
+  background-color: transparent;
+
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #560303;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.form-contato button:hover,
+.form-contato button:focus-visible {
+  background-color: #560303;
+  color: #ffffff;
+}
+
+.form-contato button:focus-visible {
+  outline: 2px solid #560303;
+  outline-offset: 4px;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .form-contato {
+    max-width: 420px;
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+
+  .campo-icone,
+  textarea,
+  .opcoes-form {
+    width: 100%;
+  }
+
+  .opcoes-form {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .secao-fale-conosco {
+    min-height: 0;
+    padding: 48px 16px 58px;
+  }
+
+  .secao-fale-conosco h2 {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .texto-fale-conosco {
+    margin-bottom: 36px;
+    font-size: 17px;
+  }
+
+  .texto-fale-conosco br {
+    display: none;
+  }
+
+  textarea {
+    height: 170px;
+  }
+}

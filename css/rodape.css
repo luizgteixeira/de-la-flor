@@ -1,0 +1,221 @@
+.rodape-de-la-flor {
+  position: relative;
+  width: 100%;
+  min-height: 496px;
+  overflow: hidden;
+  background-color: #964f4c;
+}
+
+/* Hover elegante nos ícones do rodapé */
+.rodape-de-la-flor .rodape-icone {
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease,
+    opacity 0.25s ease;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.rodape-de-la-flor .rodape-icone:hover {
+  transform: translateX(6px) scale(1.12);
+  filter:
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.55)) drop-shadow(0 6px 8px rgba(0, 0, 0, 0.18));
+  opacity: 0.92;
+}
+
+.rodape-de-la-flor .rodape-icone:active {
+  transform: translateX(4px) scale(1.04);
+}
+
+.rodape-fundo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rodape-conteudo {
+  position: relative;
+  z-index: 1;
+
+  width: min(1122px, 100%);
+  min-height: 496px;
+  margin: 0 auto;
+  padding: 78px 20px 44px;
+
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  column-gap: 55px;
+  align-items: start;
+}
+
+/* Logo à esquerda */
+.rodape-logo {
+  width: 290px;
+  height: auto;
+  display: block;
+  margin-top: 82px;
+}
+
+/* Bloco dos ícones + texto */
+.rodape-contatos {
+  position: relative;
+  width: 733px;
+  max-width: 100%;
+  aspect-ratio: 733 / 230;
+  margin-top: 48px;
+}
+
+.rodape-texto-contatos {
+  position: absolute;
+  left: 5.73%;
+  top: 0;
+
+  width: 90.18%;
+  height: auto;
+  display: block;
+}
+
+.rodape-icone {
+  position: absolute;
+  left: 0;
+
+  width: 4.1%;
+  min-width: 22px;
+  max-width: 30px;
+  height: auto;
+  display: block;
+}
+
+.icone-empresa {
+  top: 0;
+}
+
+.icone-whatsapp {
+  top: 19.6%;
+}
+
+.icone-email {
+  top: 39.6%;
+}
+
+.icone-endereco {
+  top: 57.8%;
+}
+
+.icone-instagram {
+  top: 88.7%;
+}
+
+/* Créditos inferiores */
+.rodape-creditos {
+  grid-column: 1 / -1;
+  justify-self: center;
+
+  width: min(791px, 100%);
+  height: auto;
+  display: block;
+  margin-top: 58px;
+}
+
+.rodape-creditos-linha {
+  grid-column: 1 / -1;
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 58px;
+}
+
+.rodape-creditos {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 0;
+}
+
+.rodape-link-luiz {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 19px;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  padding-bottom: 2px;
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.rodape-link-luiz span {
+  font-size: 12px;
+  transform: translateY(-1px);
+}
+
+.rodape-link-luiz:hover {
+  opacity: 0.75;
+  transform: translateY(-1px);
+  border-bottom-color: #ffffff;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .rodape-de-la-flor {
+    min-height: auto;
+  }
+
+  .rodape-conteudo {
+    min-height: auto;
+    padding: 56px 24px 36px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 36px;
+  }
+
+  .rodape-logo {
+    width: min(290px, 78vw);
+    margin-top: 0;
+  }
+
+  .rodape-contatos {
+    width: min(733px, 100%);
+    margin-top: 0;
+  }
+
+  .rodape-creditos {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 520px) {
+  .rodape-conteudo {
+    padding-left: 14px;
+    padding-right: 14px;
+    row-gap: 28px;
+  }
+
+  .rodape-icone {
+    min-width: 14px;
+  }
+
+  .rodape-contatos {
+    width: 100%;
+  }
+}

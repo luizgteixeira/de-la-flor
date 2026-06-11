@@ -1,0 +1,11 @@
+Assets do logo De La Flor
+
+Cores estimadas:
+- Fundo: RGB (149, 78, 76)
+- Logo: RGB (230, 188, 177)
+
+Arquivos principais:
+- logo-horizontal-transparente-2048px.png: versão maior, com fundo transparente
+- logo-horizontal-fundo-2048px.png: versão maior com fundo original
+- icone-quadrado-512x512.png: ícone para redes/app
+- favicon.ico: favicon multi-tamanho

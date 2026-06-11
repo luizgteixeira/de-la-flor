@@ -1,0 +1,202 @@
+.hero {
+  width: 100%;
+  height: clamp(465px, 43.05vw, 720px);
+  margin: 0 auto;
+  background-color: var(--color-hero-bg);
+}
+
+.hero__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.hero__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero__brand {
+  position: absolute;
+  top: clamp(47px, 4.35vw, 72px);
+  left: clamp(45px, 4.2vw, 78px);
+  display: inline;
+  width: clamp(280px, 25.9vw, 430px);
+  height: clamp(200px, 18.5vw, 307px);
+  max-width: 32%;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero__banner {
+  position: absolute;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__banner--momentos {
+  top: 0;
+  left: 0;
+  width: calc(100% - clamp(178px, 16.5vw, 276px));
+  object-position: left center;
+  image-rendering: optimizeSpeed;
+}
+
+.hero__banner--lateral {
+  top: 0;
+  right: 0;
+  width: clamp(178px, 16.5vw, 276px);
+  object-position: right center;
+}
+
+.hero__banner-text {
+  position: absolute;
+  top: clamp(52px, 4.8vw, 78px);
+  right: clamp(64px, 5.9vw, 104px);
+  width: clamp(401px, 37.1vw, 620px);
+  max-width: 38%;
+  height: auto;
+  z-index: 2;
+}
+
+.btn-custom {
+  position: absolute;
+  top: clamp(203px, 18.8vw, 314px);
+  right: clamp(120px, 11.1vw, 184px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  width: clamp(237px, 21.95vw, 318px);
+  height: clamp(56px, 5.2vw, 76px);
+  padding: 0 28px;
+  border: 2px solid #ffffff;
+  border-radius: 24px;
+  appearance: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: clamp(25px, 2.2vw, 32px);
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 180ms ease;
+}
+
+.btn-custom__text {
+  display: block;
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.btn-custom:hover .btn-custom__text,
+.btn-custom:focus-visible .btn-custom__text {
+  color: var(--color-header-bg);
+  text-shadow: 2px 2px 8px rgba(150, 79, 76, 0.28);
+}
+
+.btn-custom:hover,
+.btn-custom:focus-visible {
+  border-color: var(--color-header-bg);
+}
+
+.hero__dots {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(16px, 1.5vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 0.9vw, 14px);
+  z-index: 3;
+  transform: translateX(-50%);
+}
+
+.hero__dot {
+  width: clamp(8px, 0.75vw, 12px);
+  height: clamp(8px, 0.75vw, 12px);
+  padding: 0;
+  border: 1px solid var(--color-white);
+  border-radius: 999px;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.hero__dot--active {
+  background-color: var(--color-white);
+}
+
+.hero__dot:hover,
+.hero__dot:focus-visible {
+  border-color: var(--color-header-bg);
+  transform: scale(1.15);
+}
+
+.hero__dot:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.back-to-top {
+  position: fixed;
+  right: clamp(18px, 2.4vw, 34px);
+  bottom: clamp(18px, 2.4vw, 34px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background-color: var(--color-header-bg);
+  box-shadow: 0 12px 28px rgba(86, 3, 3, 0.22);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.94);
+  transition: opacity 220ms ease, transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background-color: #7b2926;
+  box-shadow: 0 16px 34px rgba(86, 3, 3, 0.30);
+  transform: translateY(-4px) scale(1.04);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
