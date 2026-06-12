@@ -95,6 +95,7 @@ python -m http.server 8000
 - Instagram: <https://www.instagram.com/alfajordelaflor/>
 - WhatsApp: <https://wa.me/message/VJUYK3MDBN3VM1/>
 - Crédito de layout/design: <https://www.instagram.com/estudiofablo/>
+- Crédito de WebDesign/Programação: <https://luizgustavodev.com/>
 
 ## Desenvolvimento
 

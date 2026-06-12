@@ -57,7 +57,7 @@
         }
       }
     </script>
-  <link rel="icon" type="image/x-icon" href="imagens/logo/fav-ico.ico" />
+  <link rel="icon" type="image/x-icon" href="imagens/logo/alfajor-peruano.webp" />
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/variaveis.css" />
   <link rel="stylesheet" href="css/tipografia.css" />
@@ -86,6 +86,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-logo" href="#home" aria-label="De La Flor - início">
@@ -115,7 +116,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section id="home" class="hero" aria-labelledby="hero-title">
       <div class="hero__inner">
         <h1 class="hero__title" id="hero-title">
@@ -141,6 +142,7 @@
           <button class="hero__dot" type="button" data-slide-index="1" aria-label="Mostrar banner 2"></button>
           <button class="hero__dot" type="button" data-slide-index="2" aria-label="Mostrar banner 3"></button>
         </div>
+        <div id="hero-slide-announcer" class="sr-only" aria-live="polite">Banner 1 exibido.</div>
       </div>
     </section>
 
@@ -491,6 +493,8 @@
 
     <section id="contato" class="secao-fale-conosco">
       <h2>Fale conosco</h2>
+      <p class="sr-only" id="contato-description">Campos marcados com * são obrigatórios. Use o formulário para enviar
+        informações sobre seu evento e contato.</p>
 
       <p class="texto-fale-conosco">
         Nossos alfajores são o toque final para um evento de sucesso. Do
@@ -500,7 +504,7 @@
         e agendar uma degustação dos nossos alfajores
       </p>
 
-      <form class="form-contato" action="#" method="post">
+      <form class="form-contato" action="#" method="post" aria-describedby="contato-description">
         <div class="coluna-form coluna-esquerda">
           <div class="campo-icone">
             <label class="sr-only" for="nome">Nome Completo *</label>
@@ -508,7 +512,7 @@
               <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.4 0-8 2.2-8 4.8V22h16v-3.2c0-2.6-3.6-4.8-8-4.8z" />
             </svg>
             <input id="nome" type="text" name="nome" placeholder="Nome Completo *" aria-label="Nome completo"
-              required />
+              aria-required="true" required />
           </div>
 
           <div class="campo-icone">
@@ -517,7 +521,8 @@
               <path
                 d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0l8 5 8-5H4zm0 12V8.4l8 5 8-5V18H4z" />
             </svg>
-            <input id="email" type="email" name="email" placeholder="Email *" aria-label="Email" required />
+            <input id="email" type="email" name="email" placeholder="Email *" aria-label="Email" aria-required="true"
+              required />
           </div>
 
           <div class="campo-icone">
@@ -611,7 +616,7 @@
             <img src="imagens/galeria/rodape/path308.webp" alt="" aria-hidden="true" loading="lazy" />
           </a>
 
-          <img class="rodape-texto-contatos" src="imagens/galeria/rodape/text294.webp" loading="lazy"
+          <img class="rodape-texto-contatos" src="imagens/galeria/rodape/text294.png" loading="lazy"
             alt="De La Flor Alfajor, CNPJ 46.343.519/0001-73. Telefone 31 99847-4128. Email delaflormagali@gmail.com. Endereço Rua Maria Moreira Reis, 26, loja 21, Itapoã, CEP 31710-320, Belo Horizonte MG, somente com hora marcada. Instagram @alfajordelaflor." />
         </div>
 

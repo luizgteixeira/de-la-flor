@@ -1,9 +1,15 @@
 .rodape-de-la-flor {
   position: relative;
   width: 100%;
-  min-height: 496px;
+  min-height: 540px;
   overflow: hidden;
   background-color: #964f4c;
+  background-image:
+    linear-gradient(rgba(150, 79, 76, 0.92), rgba(150, 79, 76, 0.92)),
+    url("../imagens/galeria/fotos/gotas-chocolate.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .rodape-de-la-flor .rodape-icone-link {
@@ -33,13 +39,7 @@
 }
 
 .rodape-fundo {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: none;
 }
 
 .rodape-conteudo {
@@ -47,7 +47,7 @@
   z-index: 1;
 
   width: min(1122px, 100%);
-  min-height: 496px;
+  min-height: 540px;
   margin: 0 auto;
   padding: 78px 20px 44px;
 
