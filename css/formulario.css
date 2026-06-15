@@ -167,11 +167,20 @@ textarea {
 }
 
 /* Botão */
+.form-contato__acoes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
 .form-contato button {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 184px;
   height: 46px;
-  margin: 0 auto;
+  margin: 0;
 
   border: 1px solid #560303;
   border-radius: 23px;
@@ -188,6 +197,13 @@ textarea {
   transition: 0.2s ease;
 }
 
+.form-contato .form-contato__limpar {
+  width: 128px;
+  background-color: #ffffff;
+  font-size: 15px;
+  text-transform: none;
+}
+
 .form-contato button:hover,
 .form-contato button:focus-visible {
   background-color: #560303;
@@ -197,6 +213,17 @@ textarea {
 .form-contato button:focus-visible {
   outline: 2px solid #560303;
   outline-offset: 4px;
+}
+
+.form-contato__status {
+  min-height: 20px;
+  margin: 14px 0 0;
+  color: #560303;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
 }
 
 /* Responsivo */
@@ -217,6 +244,11 @@ textarea {
     flex-direction: column;
     gap: 12px;
     margin-bottom: 32px;
+  }
+
+  .form-contato__acoes {
+    flex-direction: column;
+    align-items: center;
   }
 }
 

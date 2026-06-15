@@ -523,7 +523,8 @@
         e agendar uma degustação dos nossos alfajores
       </p>
 
-      <form class="form-contato" action="#" method="post" aria-describedby="contato-description">
+      <form class="form-contato" action="mailto:lgbteixeira@gmail.com?subject=Contato%20pelo%20site%20De%20La%20Flor"
+        method="post" enctype="text/plain" aria-describedby="contato-description">
         <div class="coluna-form coluna-esquerda">
           <div class="campo-icone">
             <label class="sr-only" for="nome">Nome Completo *</label>
@@ -570,7 +571,8 @@
             <img class="campo-icone__imagem" src="imagens/galeria/formulario/IconesSiteDeLaFlor-06.png" alt=""
               aria-hidden="true" loading="lazy" />
             <input id="telefone" type="tel" name="telefone" placeholder="Telefone / Whatsapp *"
-              aria-label="Telefone ou WhatsApp" aria-required="true" required />
+              aria-label="Telefone ou WhatsApp" inputmode="numeric" maxlength="14" pattern="\([0-9]{2}\) [0-9]{4}-[0-9]{4}"
+              aria-required="true" required />
           </div>
         </div>
 
@@ -581,17 +583,21 @@
 
           <div class="opcoes-form">
             <label>
-              <input type="checkbox" name="autoriza_contato" value="sim" aria-required="true" required />
-              <span>Autorizo contato para orçamento *</span>
+              <input type="checkbox" name="autoriza_contato" value="sim" />
+              <span>Autorizo contato para orçamento</span>
             </label>
 
             <label>
-              <input type="checkbox" name="receber_novidades" value="sim" aria-required="true" required />
-              <span>Desejo receber novidades *</span>
+              <input type="checkbox" name="receber_novidades" value="sim" />
+              <span>Desejo receber novidades</span>
             </label>
           </div>
 
-          <button type="submit">Enviar</button>
+          <div class="form-contato__acoes">
+            <button type="button" onclick="enviarContatoPorEmail()">Enviar</button>
+            <button class="form-contato__limpar" type="button" onclick="limparFormularioContato()">Limpar</button>
+          </div>
+          <p class="form-contato__status" aria-live="polite"></p>
         </div>
       </form>
     </section>
