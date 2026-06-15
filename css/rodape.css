@@ -6,7 +6,7 @@
   background-color: #964f4c;
   background-image:
     linear-gradient(rgba(150, 79, 76, 0.92), rgba(150, 79, 76, 0.92)),
-    url("../imagens/galeria/fotos/gotas-chocolate.png");
+    url("../imagens/galeria/rodape/path203.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -138,6 +138,16 @@
 
 .rodape-creditos {
   margin: 0;
+  color: #ffffff;
+  font-family: "Lato", Arial, sans-serif;
+  font-size: clamp(14px, 1.55vw, 18px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.rodape-creditos-separador {
   color: #ffffff;
   font-family: "Lato", Arial, sans-serif;
   font-size: clamp(14px, 1.55vw, 18px);

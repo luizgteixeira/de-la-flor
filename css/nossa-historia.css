@@ -1,7 +1,4 @@
-/* Nossa História
-   Seção montada a partir dos assets exportados do layout.
-   Carregue este arquivo depois dos demais CSS para sobrescrever a versão anterior da seção.
-*/
+/* Nossa História */
 
 .history-section {
   position: relative;
@@ -9,146 +6,80 @@
   margin: 0;
   overflow: hidden;
   background-color: #9f514e;
-  background-image: url("../imagens/galeria/nossa-historia/path72.webp");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  aspect-ratio: 1463 / 823;
 }
 
 .history-section__stage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(320px, 58%) minmax(315px, 1fr);
+  align-items: center;
+  width: min(100%, 1254px);
+  min-height: clamp(760px, 64vw, 860px);
+  margin: 0 auto;
+  padding: clamp(42px, 5.4vw, 74px) clamp(24px, 6vw, 80px);
+  gap: clamp(34px, 5vw, 72px);
 }
 
-.history-section__photos,
-.history-section__copy {
-  position: absolute;
-  inset: 0;
-}
-
-.history-section__photo,
-.history-section__title img,
-.history-section__text-image,
-.history-section__article-link img {
+.history-section__photos {
   display: block;
+  justify-self: center;
+  width: min(112%, 760px);
+  max-width: none;
   height: auto;
+  margin-block: clamp(-44px, -3vw, -24px);
   user-select: none;
-}
-
-.history-section__photo {
-  position: absolute;
-  z-index: 1;
+  transform: translate3d(0, var(--history-parallax-y, 0px), 0) scale(var(--history-parallax-scale, 1.055));
   transform-origin: center center;
-  transition: transform 260ms ease, filter 260ms ease;
+  filter: drop-shadow(0 28px 36px rgba(86, 3, 3, 0.18));
   will-change: transform;
+  transition: transform 80ms linear, filter 220ms ease;
 }
 
 .history-section__copy {
-  pointer-events: none;
-}
-
-.history-section__article-text {
-  pointer-events: auto;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .history-section__photo:hover {
-    z-index: 10;
-    transform: scale(1.06);
-    filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.22));
-  }
-}
-
-/* Posicionamento ajustado para reproduzir a montagem sobreposta da referência. */
-.history-section__photo--familia {
-  left: 8.10%;
-  top: 6.23%;
-  width: 30.76%;
-  z-index: 4;
-}
-
-.history-section__photo--cha {
-  left: 32.45%;
-  top: 4.23%;
-  width: 26.45%;
-  z-index: 3;
-}
-
-.history-section__photo--xicara {
-  left: 11.78%;
-  top: 48.19%;
-  width: 25.36%;
-  z-index: 1;
-}
-
-.history-section__photo--magali {
-  left: 28.76%;
-  top: 40.64%;
-  width: 29.39%;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: min(100%, 410px);
 }
 
 .history-section__title {
-  position: absolute;
-  left: 66.11%;
-  top: 8.92%;
-  z-index: 2;
-  width: 16.13%;
+  margin: 0 0 28px;
+  font-size: 34px;
+  text-transform: uppercase;
+  color: #eac2b5;
+  font-weight: 400;
+  font-family: "Tenor Sans", serif;
+  line-height: 1.28;
+  letter-spacing: 0;
+}
+
+.history-section__text {
+  width: 315px;
+  height: 370px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 400;
+  font-family: "Lato", Arial, sans-serif;
+  line-height: 1.18;
+}
+
+.history-section__text h3 {
   margin: 0;
-  line-height: 0;
+  font: inherit;
+  color: inherit;
 }
 
-.history-section__title img {
-  width: 100%;
+.history-section__text h3 + h3 {
+  margin-top: 22px;
 }
-
-.history-section__text-image {
-  position: absolute;
-  left: 65.73%;
-  top: 25.26%;
-  z-index: 2;
-  width: 28.98%;
-}
-
-.history-section__article-link {
-  position: absolute;
-  left: 65.80%;
-  top: 88.07%;
-  z-index: 3;
-  display: block;
-  width: 18.18%;
-  line-height: 0;
-}
-
-.history-section__article-link img {
-  width: 100%;
-}
-
-.history-section__article-link:hover,
-.history-section__article-link:focus-visible {
-  filter: brightness(1.15);
-}
-
-.history-section__article-link:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 6px;
-}
-
 
 .history-section__article-text {
-  position: absolute;
-  left: 65.80%;
-  top: 88.07%;
-  z-index: 3;
-  width: 28%;
-  margin: 0;
+  width: min(100%, 315px);
+  margin: 26px 0 0;
   font-family: "Lato", Arial, sans-serif;
-  font-size: clamp(12px, 1.12vw, 18px);
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1.28;
+  line-height: 1.2;
   color: #ffffff;
 }
 
@@ -170,81 +101,70 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 760px) {
-  .history-section {
-    min-height: 940px;
-    aspect-ratio: auto;
-    background-position: center top;
-  }
-
-  .history-section__stage,
-  .history-section__photos,
-  .history-section__copy {
-    position: relative;
-    inset: auto;
-    height: auto;
-  }
-
+@media (max-width: 980px) {
   .history-section__stage {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    padding: 42px 20px 52px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    min-height: 0;
+    padding-block: 46px 56px;
+    gap: 32px;
   }
 
   .history-section__photos {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .history-section__photo,
-  .history-section__photo--familia,
-  .history-section__photo--cha,
-  .history-section__photo--xicara,
-  .history-section__photo--magali {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    z-index: auto;
+    width: min(108%, 620px);
+    margin-block: -28px;
   }
 
   .history-section__copy {
-    display: grid;
-    justify-items: center;
-    gap: 18px;
-  }
-
-  .history-section__title,
-  .history-section__text-image,
-  .history-section__article-text {
-    position: static;
-    width: min(100%, 360px);
+    align-items: center;
+    width: min(100%, 520px);
+    text-align: left;
   }
 
   .history-section__title {
-    line-height: 1;
-  }
-
-  .history-section__article-text {
-    width: min(100%, 420px);
-    font-size: 16px;
-    line-height: 1.32;
-    text-align: center;
+    width: min(100%, 315px);
   }
 }
 
-@media (max-width: 420px) {
-  .history-section {
-    min-height: 860px;
+@media (prefers-reduced-motion: reduce) {
+  .history-section__photos {
+    transform: none !important;
+    filter: none;
+    transition: none;
+    will-change: auto;
   }
+}
 
+@media (max-width: 760px) {
+  .history-section__photos {
+    width: min(100%, 560px);
+    margin-block: 0;
+    transform: none !important;
+    filter: none;
+    will-change: auto;
+  }
+}
+
+@media (max-width: 520px) {
   .history-section__stage {
-    padding-inline: 16px;
+    padding: 38px 18px 46px;
+    gap: 24px;
   }
 
+  .history-section__copy,
+  .history-section__title,
+  .history-section__text,
   .history-section__article-text {
-    font-size: 15px;
+    width: min(100%, 315px);
+  }
+
+  .history-section__title {
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+
+  .history-section__text {
+    height: auto;
+    min-height: 370px;
   }
 }

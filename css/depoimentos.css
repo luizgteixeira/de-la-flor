@@ -6,24 +6,6 @@
   background-color: #a8776d;
 }
 
-.testimonials-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    url("../imagens/banners/aspas-esquerda.png"),
-    url("../imagens/banners/aspas-direita.png");
-  background-position:
-    left 32px top 28px,
-    right 32px bottom 28px;
-  background-repeat: no-repeat, no-repeat;
-  background-size:
-    min(34vw, 320px) auto,
-    min(34vw, 320px) auto;
-  opacity: 0.12;
-  pointer-events: none;
-}
-
 .testimonials-section__inner {
   position: relative;
   z-index: 1;
@@ -116,31 +98,31 @@
 
 .testimonial-card {
   min-height: 328px;
-  padding: 19px 19px 27px;
+  padding: 24px 19px 27px;
   border-radius: 4px;
   background-color: #f3f4f5;
   box-shadow: 0 8px 16px rgba(86, 3, 3, 0.12);
   scroll-snap-align: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .testimonial-card__author {
+  order: 3;
   display: flex;
   align-items: center;
-  gap: 11px;
-}
-
-.testimonial-card__avatar {
-  flex: 0 0 auto;
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-  background-color: #c7b09f;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
 }
 
 .testimonial-card__author-copy {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  align-items: center;
+  gap: 5px;
   min-width: 0;
 }
 
@@ -162,15 +144,19 @@
 }
 
 .testimonial-card__divider {
+  order: 2;
   display: block;
   width: 100%;
   height: 1px;
-  margin: 14px 0 12px;
+  margin: 18px 0 20px;
   background-color: #7d7fa8;
 }
 
 .testimonial-card__text {
+  order: 1;
+  display: block;
   width: min(100%, 222px);
+  margin: 0 auto;
 }
 
 .testimonials-section__dots {

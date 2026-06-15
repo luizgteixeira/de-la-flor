@@ -6,19 +6,6 @@
   background-color: #ee766d;
 }
 
-.secao-visita::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-image: url("../imagens/galeria/ficamos-felizes/gps.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: min(18vw, 760px) auto;
-  opacity: 0.12;
-  pointer-events: none;
-}
-
 .fundo-visita {
   position: absolute;
   inset: 0;

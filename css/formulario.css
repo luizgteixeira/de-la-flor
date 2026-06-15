@@ -8,19 +8,6 @@
   background-color: #f2f2f2;
 }
 
-.secao-fale-conosco::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: url("../imagens/galeria/fotos/docura-tradicao.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.18;
-  pointer-events: none;
-}
-
 .secao-fale-conosco>* {
   position: relative;
   z-index: 1;
@@ -90,7 +77,7 @@
 
 /* Ícone redondo */
 .campo-icone i,
-.campo-icone svg {
+.campo-icone__imagem {
   position: absolute;
   left: 0;
   top: 16px;
@@ -98,20 +85,7 @@
 
   width: 22px;
   height: 22px;
-  border-radius: 11px;
-  background-color: #560303;
-  color: #ffffff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 12px;
-  line-height: 1;
-}
-
-.campo-icone svg {
-  fill: currentColor;
+  object-fit: contain;
 }
 
 /* Inputs */
