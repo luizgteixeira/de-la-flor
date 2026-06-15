@@ -1,31 +1,47 @@
 # Site De La Flor
 
-Site institucional da **De La Flor**, marca de alfajores e lembranças personalizadas com identidade peruana e produção local em Belo Horizonte.
+Site institucional da **De La Flor**, marca de alfajores peruanos, presentes afetivos e lembranças personalizadas para eventos, celebrações, ações de marca e compra online.
 
-O projeto é um site estático em **HTML, CSS e JavaScript puro**, sem framework ou empacotador. A arquitetura prioriza simplicidade, desempenho e compatibilidade com hospedagens estáticas.
+O projeto é um site estático feito com **HTML, CSS e JavaScript puro**, sem framework, build, bundler ou instalação de pacotes. A arquitetura prioriza simplicidade, desempenho, manutenção direta dos arquivos e compatibilidade com hospedagens estáticas.
 
 ## Objetivo
 
-Apresentar a De La Flor, seus serviços para eventos, produtos para compra online, depoimentos e canais de contato diretos via WhatsApp e e-mail.
+Apresentar a De La Flor, sua história, seus serviços para eventos, produtos para compra online, depoimentos e canais de contato diretos via WhatsApp, e-mail e formulário.
 
-A página inicial atual inclui:
+A página inicial inclui:
 
 - banner principal com chamada para compra;
-- sessão de eventos e serviços;
-- histórico da marca;
+- seção de eventos e serviços;
+- seção Nossa História com efeito parallax nas fotos;
 - galeria de fotos;
-- vitrine de produtos;
+- vitrine de produtos para compra online;
 - depoimentos de clientes;
 - formulário de contato;
-- rodapé com informações e créditos.
+- faixa informativa de atendimento;
+- rodapé com informações de contato e créditos.
+
+## Alterações recentes
+
+- Atualização da seção **Menu/Eventos** para exibir cards em grade com **2 linhas e 3 colunas** em telas largas.
+- Inclusão das imagens de eventos em `imagens/galeria/eventos/`.
+- Ajuste do parallax da seção **Nossa História**, combinando `css/nossa-historia.css` com `js/parallax-sobre.js`.
+- Intensificação do movimento parallax das fotos em desktop e tablet, mantendo o recurso desativado em mobile e para usuários com `prefers-reduced-motion`.
+- Reorganização dos cards da seção **Depoimentos**:
+  - imagem do texto do depoimento no topo;
+  - nome e cargo/profissão na parte inferior;
+  - remoção do avatar visual `.testimonial-card__avatar`.
+- Ajustes em `css/depoimentos.css` para garantir a ordem visual correta dos elementos nos cards.
 
 ## Melhorias aplicadas
 
-- SEO básico com `title`, `description`, `canonical`, Open Graph e Twitter Cards.
-- Acessibilidade reforçada em formulários com labels ocultos e `aria-hidden` em elementos decorativos.
+- SEO básico com `title`, `description`, `canonical`, Open Graph, Twitter Cards e dados estruturados JSON-LD.
+- Acessibilidade reforçada com `aria-label`, `aria-labelledby`, `aria-hidden` em elementos decorativos e labels ocultos no formulário.
 - Carregamento assíncrono de CSS não crítico para reduzir bloqueio de renderização.
-- Substituição do Font Awesome por ícones SVG inline no formulário.
-- Uso de `font-display: swap` nas fontes carregadas.
+- Organização dos estilos por seção em arquivos CSS separados.
+- Uso de imagens otimizadas em `.webp` quando disponível.
+- Menu mobile controlado por JavaScript.
+- Carrosséis e interações controlados por JavaScript puro.
+- Respeito à preferência de redução de movimento no efeito parallax.
 
 ## Estrutura do projeto
 
@@ -51,44 +67,189 @@ A página inicial atual inclui:
 │   ├── tipografia.css
 │   └── variaveis.css
 ├── js/
+│   ├── formulario.js
+│   ├── instagram-feed.js
 │   ├── navegacao.js
+│   ├── parallax-sobre.js
 │   └── dados/
 │       ├── compre-on-line.js
-│       ├── depoimentos.js
-│       ├── eventos.js
-│       └── hero.js
+│       └── depoimentos.js
 ├── fontes/
 └── imagens/
     ├── banner-principal/
     ├── banners/
+    │   ├── aspas-direita.png
+    │   ├── aspas-esquerda.png
+    │   ├── banner-lateral.webp
+    │   ├── banner-momentos.webp
+    │   └── texto-banner.webp
     ├── galeria/
     │   ├── compre-on-line/
+    │   │   ├── g20.webp
+    │   │   ├── g22.webp
+    │   │   ├── image14.webp
+    │   │   ├── image34.webp
+    │   │   ├── image54.webp
+    │   │   ├── path70.png
+    │   │   └── path71.png
     │   ├── depoimentos/
+    │   │   ├── g96.webp
+    │   │   ├── g98.webp
+    │   │   ├── path209-removebg-preview.png
+    │   │   ├── path210-removebg-preview.png
+    │   │   └── text99.webp
     │   ├── eventos/
+    │   │   ├── 15anosProvisoria.jpg
+    │   │   ├── Batizado.jpeg
+    │   │   ├── Casamento.jpg
+    │   │   ├── DatasComemorativas.jpg
+    │   │   ├── Formatura.jpeg
+    │   │   └── PrimeiraEucaristia.jpeg
     │   ├── ficamos-felizes/
+    │   │   ├── gps.webp
+    │   │   ├── path265.webp
+    │   │   └── text265.webp
+    │   ├── formulario/
+    │   │   ├── IconesSiteDeLaFlor-01.png
+    │   │   ├── IconesSiteDeLaFlor-02.png
+    │   │   ├── IconesSiteDeLaFlor-03.png
+    │   │   ├── IconesSiteDeLaFlor-04.png
+    │   │   ├── IconesSiteDeLaFlor-05.png
+    │   │   ├── IconesSiteDeLaFlor-06.png
+    │   │   └── IconesSiteDeLaFlor-07.png
     │   ├── fotos/
+    │   │   ├── docura-tradicao.png
+    │   │   ├── gotas-chocolate.png
+    │   │   ├── image254.webp
+    │   │   ├── image256.webp
+    │   │   └── image258.webp
     │   ├── nossa-historia/
+    │   │   ├── FotosFamilia.png
+    │   │   └── path72.webp
     │   └── rodape/
+    │       ├── IconesSiteDeLaFlor-08.png
+    │       ├── IconesSiteDeLaFlor-09.png
+    │       ├── IconesSiteDeLaFlor-10.png
+    │       ├── IconesSiteDeLaFlor-11.png
+    │       ├── IconesSiteDeLaFlor-12.png
+    │       ├── IconesSiteDeLaFlor-13.png
+    │       ├── IconesSiteDeLaFlor-14.png
+    │       ├── path203.webp
+    │       └── text294.png
     └── logo/
+        ├── alfajor-peruano.webp
+        ├── fav-ico.ico
+        └── logo.webp
 ```
 
-## Como testar
+## Arquivos principais
 
-1. Abra `index.html` em um navegador moderno.
-2. Ou use um servidor estático local, por exemplo:
+### `index.html`
+
+Arquivo principal do site. Contém a estrutura das seções:
+
+- `#home` — banner principal;
+- `#menu` — eventos e serviços;
+- `#sobre` — Nossa História;
+- `#fotos` — galeria;
+- `#loja` — compra online;
+- `#depoimentos` — depoimentos;
+- `#contato` — formulário;
+- `.secao-visita` — faixa de atendimento;
+- `footer` — rodapé.
+
+### `css/secoes.css`
+
+Controla a seção de eventos/menu, incluindo os cards de eventos e o CTA de orçamento.
+
+### `css/nossa-historia.css`
+
+Controla o layout da seção Nossa História, a posição das fotos e o comportamento visual necessário para o parallax.
+
+### `js/parallax-sobre.js`
+
+Aplica o movimento parallax na imagem `.history-section__photos` dentro da seção `#sobre`.
+
+O script:
+
+- calcula o progresso de rolagem da seção;
+- aplica `translate3d` na imagem;
+- reduz custo de renderização usando `requestAnimationFrame`;
+- desativa o efeito em telas pequenas;
+- respeita `prefers-reduced-motion`.
+
+### `css/depoimentos.css`
+
+Controla a seção de depoimentos, carrossel, cards, setas, dots e a nova ordem visual dos elementos:
+
+1. texto do depoimento;
+2. linha divisória;
+3. nome e cargo/profissão.
+
+### `js/dados/compre-on-line.js`
+
+Arquivo de dados e comportamento da vitrine de produtos da seção de compra online.
+
+### `js/dados/depoimentos.js`
+
+Arquivo de dados e comportamento do carrossel de depoimentos.
+
+### `js/navegacao.js`
+
+Controla a navegação principal, menu mobile e interações de navegação.
+
+### `js/instagram-feed.js`
+
+Controla o carregamento/exibição da galeria relacionada ao Instagram.
+
+### `js/formulario.js`
+
+Controla comportamentos do formulário de contato.
+
+## Como testar localmente
+
+Abra `index.html` diretamente em um navegador moderno.
+
+Também é possível usar um servidor estático local:
 
 ```bash
-# no Windows com Python 3
 python -m http.server 8000
 ```
 
-1. Acesse `http://localhost:8000`.
+Depois acesse:
+
+```text
+http://localhost:8000
+```
+
+## Checklist de validação
+
+Antes de publicar, conferir:
+
+- abrir a home no navegador;
+- verificar responsividade em desktop, tablet e mobile;
+- testar menu mobile aberto e fechado;
+- verificar a seção de eventos em grade 2x3 no desktop;
+- verificar se as imagens de eventos carregam corretamente;
+- testar o parallax da seção Nossa História no desktop;
+- confirmar que o parallax não roda no mobile;
+- validar a ordem dos depoimentos: texto em cima e nome/cargo embaixo;
+- testar carrosséis de compra online e depoimentos;
+- testar links de Instagram, WhatsApp, e-mail e créditos;
+- testar formulário e campos obrigatórios;
+- verificar console do navegador;
+- revisar `title`, `meta description`, hierarquia de títulos e textos alternativos;
+- confirmar contraste, foco por teclado e labels ocultos.
 
 ## Notas de publicação
 
 - O site está preparado para hospedagem estática.
-- Preserve a hierarquia de imagens e CSS ao mover o projeto.
-- Caso adicione novas fontes, confirme licenças antes de publicar.
+- Preserve a hierarquia de pastas ao mover o projeto.
+- Preserve nomes de arquivos, classes, IDs, âncoras e caminhos de imagens já em uso.
+- Evite renomear imagens sem atualizar todos os caminhos no HTML, CSS e JavaScript.
+- Após substituir arquivos CSS ou JS em produção, limpe o cache do navegador ou force atualização com `Ctrl + F5`.
+- Caso adicione novas fontes, confirme as licenças antes de publicar.
+- Não faça deploy ou alteração de hospedagem sem confirmação.
 
 ## Links oficiais
 
@@ -99,52 +260,28 @@ python -m http.server 8000
 
 ## Desenvolvimento
 
-Este projeto não depende de build, bundler ou instalação de pacotes. Para visualizar localmente, abra o `index.html` no navegador ou use uma extensão como Live Server no VS Code.
+Este projeto não depende de instalação de pacotes.
 
-Validações manuais recomendadas:
+Fluxo recomendado:
 
-- abrir a home no navegador;
-- verificar responsividade em desktop, tablet e mobile;
-- testar menu mobile aberto e fechado;
-- testar links de Instagram, WhatsApp e créditos;
-- testar formulário, campos obrigatórios, sucesso e erro;
-- verificar console do navegador;
-- revisar SEO básico: `title`, `meta description`, hierarquia de títulos e textos claros;
-- confirmar contraste, foco por teclado, labels e textos alternativos.
+1. editar os arquivos diretamente;
+2. testar com Live Server ou `python -m http.server 8000`;
+3. validar responsividade;
+4. revisar console do navegador;
+5. fazer commit com uma descrição clara das alterações.
 
-## Pendências
+Exemplo de commit para a alteração dos depoimentos:
 
-Conteúdo:
-
-- confirmar se as pastas de fotos e banners no Drive ainda estão vazias;
-- adicionar fotos finais de produtos;
-- adicionar fotos finais de serviços;
-- coletar depoimentos reais;
-- confirmar links oficiais;
-- confirmar grafia de `Magáli`/`Magali` e `Andrés`;
-- confirmar o uso do link da matéria do Estado de Minas.
-
-Design:
-
-- revisar o layout `Site_DeLaFlor_V1b` em JPG/PDF;
-- abrir o `.ai` no Adobe Illustrator quando necessário;
-- verificar licenças de fontes;
-- exportar assets finais;
-- definir versões mobile dos banners.
-
-Desenvolvimento:
-
-- preencher `index.html`;
-- inserir dados em `js/dados/`;
-- configurar formulário e estados visuais;
-- validar links e CTAs;
-- testar responsividade;
-- revisar acessibilidade e SEO.
+```bash
+git add index.html css/depoimentos.css imagens/galeria/depoimentos/
+git commit -m "style: inverte layout dos depoimentos"
+```
 
 ## Observações de segurança e manutenção
 
 - Não expor dados sensíveis em HTML, JavaScript, comentários ou mensagens de erro.
 - Não usar mensagens técnicas cruas para usuário final.
-- Preservar nomes de arquivos, classes, IDs, âncoras e caminhos de imagens quando já estiverem em uso.
 - Evitar dependências externas sem necessidade.
-- Não fazer deploy ou alteração de hospedagem sem confirmação.
+- Manter arquivos de imagem otimizados para reduzir tempo de carregamento.
+- Conferir caminhos relativos sempre que mover arquivos entre pastas.
+- Validar acessibilidade sempre que alterar ordem visual de elementos.
