@@ -14,7 +14,56 @@ const sendJson = (response, statusCode, body) => {
   response.end(JSON.stringify(body));
 };
 
+const getAllowedOrigins = () => {
+  const configuredOrigins = process.env.INSTAGRAM_ALLOWED_ORIGINS;
+
+  if (configuredOrigins) {
+    return configuredOrigins
+      .split(",")
+      .map((origin) => origin.trim())
+      .filter(Boolean);
+  }
+
+  return ["http://127.0.0.1:5500", "http://localhost:5500"];
+};
+
+const setCorsHeaders = (request, response) => {
+  const origin = request.headers?.origin;
+
+  if (!origin || !getAllowedOrigins().includes(origin)) {
+    return;
+  }
+
+  response.setHeader("Access-Control-Allow-Origin", origin);
+  response.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  response.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type");
+  response.setHeader("Vary", "Origin");
+};
+
+const getInstagramImageUrl = (item) => {
+  if (item.media_type === "VIDEO") {
+    return item.thumbnail_url || item.media_url || "";
+  }
+
+  return item.media_url || item.thumbnail_url || "";
+};
+
+const mapInstagramItem = (item) => ({
+  imageUrl: getInstagramImageUrl(item),
+  permalink: item.permalink || "",
+  caption: item.caption || "",
+  timestamp: item.timestamp || "",
+});
+
 module.exports = async function instagramFeed(request, response) {
+  setCorsHeaders(request, response);
+
+  if (request.method === "OPTIONS") {
+    response.statusCode = 204;
+    response.end();
+    return;
+  }
+
   if (request.method && request.method !== "GET") {
     response.setHeader("Allow", "GET");
     sendJson(response, 405, { error: "Método não permitido." });
@@ -43,7 +92,9 @@ module.exports = async function instagramFeed(request, response) {
     }
 
     const payload = await instagramResponse.json();
-    const items = Array.isArray(payload.data) ? payload.data.slice(0, 3) : [];
+    const items = Array.isArray(payload.data)
+      ? payload.data.slice(0, 3).map(mapInstagramItem)
+      : [];
 
     response.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate=86400");
     sendJson(response, 200, items);

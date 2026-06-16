@@ -51,6 +51,10 @@ A página inicial inclui:
 ├── robots.txt
 ├── sitemap.xml
 ├── README.md
+├── api/
+│   └── instagram-feed.js
+├── dados/
+│   └── instagram-feed.json
 ├── css/
 │   ├── cabecalho.css
 │   ├── compra-on-line.css
@@ -200,7 +204,46 @@ Controla a navegação principal, menu mobile e interações de navegação.
 
 ### `js/instagram-feed.js`
 
-Controla o carregamento/exibição da galeria relacionada ao Instagram.
+Controla o carregamento da galeria relacionada ao Instagram. Ao abrir o site, o script consulta o endpoint configurado em `data-instagram-feed-endpoint` no container `#instagram-photos`. Se o atributo estiver vazio, usa `/api/instagram-feed`. Quando recebe mídias válidas, substitui os cards estáticos da seção `#fotos` pelas 3 publicações mais recentes. Se a rota falhar, demorar, retornar vazio ou estiver indisponível no ambiente local, os 3 cards estáticos do HTML permanecem visíveis.
+
+Exemplo para desenvolvimento local com backend em outra porta:
+
+```html
+<div
+  class="photos-section__grid"
+  id="instagram-photos"
+  aria-live="polite"
+  data-instagram-feed-endpoint="http://localhost:3333/api/instagram-feed"
+>
+```
+
+Em produção, deixe o atributo vazio ou remova o atributo para usar o padrão `/api/instagram-feed`.
+
+### `api/instagram-feed.js`
+
+Endpoint backend/serverless responsável por buscar as últimas mídias pela API oficial da Meta/Instagram e devolver apenas os dados públicos necessários para o frontend:
+
+```json
+[
+  {
+    "imageUrl": "https://...",
+    "permalink": "https://www.instagram.com/p/...",
+    "caption": "Legenda da foto",
+    "timestamp": "2026-06-16T12:00:00Z"
+  }
+]
+```
+
+O token de acesso não fica no HTML nem no JavaScript público. Ele deve existir somente no ambiente seguro do backend/serverless.
+
+Variáveis de ambiente necessárias:
+
+- `INSTAGRAM_USER_ID`: ID da conta do Instagram Business/Creator conectada à Meta.
+- `INSTAGRAM_ACCESS_TOKEN`: token de acesso da API Graph com permissão para ler as mídias da conta.
+- `INSTAGRAM_GRAPH_API_VERSION`: opcional; quando ausente, usa `v23.0`.
+- `INSTAGRAM_ALLOWED_ORIGINS`: opcional; lista separada por vírgula para CORS em desenvolvimento. Quando ausente, permite `http://127.0.0.1:5500` e `http://localhost:5500`.
+
+Em hospedagem estática pura, crie uma função serverless ou backend equivalente respondendo em `/api/instagram-feed` com o mesmo formato acima. Sem esse endpoint, o site continua exibindo as imagens estáticas atuais como fallback.
 
 ### `js/formulario.js`
 
@@ -221,6 +264,18 @@ Depois acesse:
 ```text
 http://localhost:8000
 ```
+
+Com Live Server em `http://127.0.0.1:5500/index.html`, a rota `/api/instagram-feed` não executa `api/instagram-feed.js`, porque o Live Server serve apenas arquivos estáticos. Nesse cenário, o teste valida o fallback: os 3 cards estáticos da seção `#fotos` devem continuar aparecendo.
+
+Para testar a integração real em desenvolvimento, rode um backend/serverless local em outra porta e configure o atributo do HTML:
+
+```html
+data-instagram-feed-endpoint="http://localhost:3333/api/instagram-feed"
+```
+
+Esse backend local deve ler `INSTAGRAM_USER_ID` e `INSTAGRAM_ACCESS_TOKEN` no ambiente seguro do servidor e devolver o JSON no formato documentado acima. Se o site estiver em `127.0.0.1:5500` e o backend em outra porta, o backend precisa responder CORS para essa origem. O endpoint `api/instagram-feed.js` já permite `http://127.0.0.1:5500` e `http://localhost:5500` por padrão, ou a lista definida em `INSTAGRAM_ALLOWED_ORIGINS`. Nenhum token deve ser colocado no HTML, no CSS ou no JavaScript público.
+
+Em produção, publique uma rota serverless/backend em `/api/instagram-feed` e deixe o atributo `data-instagram-feed-endpoint` vazio para usar o caminho padrão.
 
 ## Checklist de validação
 

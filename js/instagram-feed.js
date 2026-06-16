@@ -1,14 +1,9 @@
-const instagramGrid = document.querySelector("#instagram-photos");
 const instagramEndpoint = "/api/instagram-feed";
-const instagramFallbackEndpoint = "dados/instagram-feed.json";
 const instagramMaxItems = 3;
 
-const getInstagramImageUrl = (item) => {
-  if (item.media_type === "VIDEO") {
-    return item.thumbnail_url || item.media_url || "";
-  }
-
-  return item.media_url || item.thumbnail_url || "";
+const getConfiguredInstagramEndpoint = (grid) => {
+  const configuredEndpoint = grid.dataset.instagramFeedEndpoint?.trim();
+  return configuredEndpoint || instagramEndpoint;
 };
 
 const getInstagramAltText = (item) => {
@@ -21,20 +16,38 @@ const getInstagramAltText = (item) => {
   return caption.length > 120 ? `${caption.slice(0, 117).trim()}...` : caption;
 };
 
-const createInstagramStatus = (message) => {
-  const status = document.createElement("p");
-  status.className = "photos-section__status";
-  status.textContent = message;
-  return status;
+const isValidInstagramUrl = (url) => {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.protocol === "https:";
+  } catch (error) {
+    return false;
+  }
 };
 
-const createInstagramItem = (item) => {
-  const imageUrl = getInstagramImageUrl(item);
-
-  if (!imageUrl || !item.permalink) {
+const normalizeInstagramItem = (item) => {
+  if (!item || typeof item !== "object") {
     return null;
   }
 
+  const imageUrl =
+    typeof item.imageUrl === "string" ? item.imageUrl.trim() : "";
+  const permalink =
+    typeof item.permalink === "string" ? item.permalink.trim() : "";
+
+  if (!isValidInstagramUrl(imageUrl) || !isValidInstagramUrl(permalink)) {
+    return null;
+  }
+
+  return {
+    imageUrl,
+    permalink,
+    caption: typeof item.caption === "string" ? item.caption : "",
+    timestamp: typeof item.timestamp === "string" ? item.timestamp : "",
+  };
+};
+
+const createInstagramItem = (item) => {
   const article = document.createElement("article");
   article.className = "photos-section__item";
 
@@ -47,7 +60,7 @@ const createInstagramItem = (item) => {
 
   const image = document.createElement("img");
   image.className = "photos-section__image";
-  image.src = imageUrl;
+  image.src = item.imageUrl;
   image.loading = "lazy";
   image.alt = getInstagramAltText(item);
 
@@ -65,12 +78,14 @@ const fetchInstagramFeed = async (url) => {
   }
 
   const data = await response.json();
-  return Array.isArray(data) ? data : data.items;
+  return Array.isArray(data) ? data : [];
 };
 
-const renderInstagramFeed = (items, statusMessage = "") => {
+const renderInstagramFeed = (grid, items) => {
   const articles = items
     .slice(0, instagramMaxItems)
+    .map(normalizeInstagramItem)
+    .filter(Boolean)
     .map(createInstagramItem)
     .filter(Boolean);
 
@@ -78,43 +93,28 @@ const renderInstagramFeed = (items, statusMessage = "") => {
     throw new Error("Instagram feed empty");
   }
 
-  if (statusMessage) {
-    articles.push(createInstagramStatus(statusMessage));
-  }
-
-  instagramGrid.replaceChildren(...articles);
-};
-
-const showInstagramFallbackMessage = () => {
-  if (!instagramGrid || instagramGrid.querySelector(".photos-section__status")) {
-    return;
-  }
-
-  instagramGrid.appendChild(
-    createInstagramStatus("Não foi possível atualizar as fotos do Instagram agora. As imagens atuais continuam disponíveis.")
-  );
+  grid.replaceChildren(...articles);
 };
 
 const initInstagramFeed = async () => {
+  const instagramGrid = document.querySelector("#instagram-photos");
+
   if (!instagramGrid) {
     return;
   }
 
   try {
-    const items = await fetchInstagramFeed(instagramEndpoint);
-    renderInstagramFeed(items);
-  } catch (apiError) {
-    try {
-      // Fallback para uso local/estático. A integração real precisa da rota serverless para proteger o token.
-      const fallbackItems = await fetchInstagramFeed(instagramFallbackEndpoint);
-      renderInstagramFeed(
-        fallbackItems,
-        "Não foi possível atualizar as fotos do Instagram agora. As imagens atuais continuam disponíveis."
-      );
-    } catch (fallbackError) {
-      showInstagramFallbackMessage();
-    }
+    // Configure este endpoint no backend/serverless. O token do Instagram nunca deve ir para o frontend.
+    const endpoint = getConfiguredInstagramEndpoint(instagramGrid);
+    const items = await fetchInstagramFeed(endpoint);
+    renderInstagramFeed(instagramGrid, items);
+  } catch (error) {
+    // Em caso de erro, os cards estáticos do HTML permanecem visíveis como fallback.
   }
 };
 
-initInstagramFeed();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initInstagramFeed);
+} else {
+  initInstagramFeed();
+}
