@@ -98,6 +98,7 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  box-sizing: border-box;
   width: clamp(237px, 21.95vw, 318px);
   height: clamp(56px, 5.2vw, 76px);
   padding: 0 28px;
@@ -115,15 +116,23 @@
   white-space: nowrap;
   cursor: pointer;
   box-shadow: 0 18px 40px rgba(86, 3, 3, 0.14);
-  transition: border-color 180ms ease, background-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    border-color 180ms ease,
+    background-color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .btn-custom:hover,
 .btn-custom:focus-visible {
-  border-color: #7b2926;
+  border-color: var(--color-header-bg);
   background-color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 22px 44px rgba(86, 3, 3, 0.20);
+  box-shadow: 0 22px 44px rgba(86, 3, 3, 0.2);
+}
+
+.btn-custom:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn-custom__text {
