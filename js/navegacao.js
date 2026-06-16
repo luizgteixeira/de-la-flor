@@ -54,6 +54,7 @@ const contatoStatus = contatoForm
 const contatoTelefone = contatoForm
   ? contatoForm.querySelector('#telefone')
   : null;
+let contatoStatusTimeoutId = null;
 
 const getErrorMessage = (input) => {
   if (input.validity.valueMissing) {
@@ -78,9 +79,27 @@ const clearFieldError = (input) => {
 };
 
 const clearContatoStatus = () => {
+  if (contatoStatusTimeoutId) {
+    window.clearTimeout(contatoStatusTimeoutId);
+    contatoStatusTimeoutId = null;
+  }
+
   if (contatoStatus) {
     contatoStatus.textContent = '';
   }
+};
+
+const showTemporaryContatoStatus = (message) => {
+  if (!contatoStatus) {
+    return;
+  }
+
+  clearContatoStatus();
+  contatoStatus.textContent = message;
+  contatoStatusTimeoutId = window.setTimeout(() => {
+    contatoStatus.textContent = '';
+    contatoStatusTimeoutId = null;
+  }, 4500);
 };
 
 const setFieldError = (input) => {
@@ -96,6 +115,26 @@ const setFieldError = (input) => {
 const getContatoValue = (formData, fieldName) => formData.get(fieldName)?.toString().trim() || '';
 
 const getCheckboxValue = (formData, fieldName) => (formData.has(fieldName) ? 'Sim' : 'Não');
+
+const hasContatoFormValue = () => {
+  if (!contatoForm) {
+    return false;
+  }
+
+  const fields = Array.from(contatoForm.elements);
+
+  return fields.some((field) => {
+    if (field.type === 'button' || field.type === 'submit' || field.type === 'reset') {
+      return false;
+    }
+
+    if (field.type === 'checkbox' || field.type === 'radio') {
+      return field.checked;
+    }
+
+    return typeof field.value === 'string' && field.value.trim() !== '';
+  });
+};
 
 const buildContatoMailto = () => {
   const formData = new FormData(contatoForm);
@@ -173,6 +212,11 @@ const enviarContatoPorEmail = () => {
 
 const limparFormularioContato = () => {
   if (!contatoForm) {
+    return;
+  }
+
+  if (!hasContatoFormValue()) {
+    showTemporaryContatoStatus('Não há campos preenchidos para limpar. Este botão serve apenas para limpar o formulário.');
     return;
   }
 

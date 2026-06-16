@@ -26,3 +26,34 @@
   height: auto;
   display: block;
 }
+
+.texto-visita-mobile {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .secao-visita {
+    min-height: 230px;
+    height: auto;
+    padding: 38px 22px;
+  }
+
+  .texto-visita {
+    display: none;
+  }
+
+  .texto-visita-mobile {
+    position: relative;
+    z-index: 2;
+    display: block;
+    max-width: 360px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-family: "Lato", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(86, 3, 3, 0.24);
+  }
+}
