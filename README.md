@@ -1,49 +1,48 @@
-# Site De La Flor
+# De La Flor - Site Institucional
 
 Site institucional da **De La Flor**, marca de alfajores peruanos, presentes afetivos e lembranças personalizadas para eventos, celebrações, ações de marca e compra online.
 
-O projeto é um site estático feito com **HTML, CSS e JavaScript puro**, sem framework, build, bundler ou instalação de pacotes. A arquitetura prioriza simplicidade, desempenho, manutenção direta dos arquivos e compatibilidade com hospedagens estáticas.
+O projeto foi desenvolvido com **HTML, CSS e JavaScript puro**, sem framework, build ou dependências obrigatórias. A proposta é entregar uma experiência visual elegante, rápida, responsiva e simples de manter.
 
-## Objetivo
+## Visão Geral
 
-Apresentar a De La Flor, sua história, seus serviços para eventos, produtos para compra online, depoimentos e canais de contato diretos via WhatsApp, e-mail e formulário.
+A página apresenta a marca, sua história familiar, opções para eventos, galeria de fotos, vitrine de produtos, depoimentos e canais diretos de contato.
 
-A página inicial inclui:
+Principais seções:
 
-- banner principal com chamada para compra;
-- seção de eventos e serviços;
-- seção Nossa História com efeito parallax nas fotos;
-- galeria de fotos;
-- vitrine de produtos para compra online;
-- depoimentos de clientes;
-- formulário de contato;
-- faixa informativa de atendimento;
-- rodapé com informações de contato e créditos.
+- **Home** com chamada principal e identidade visual da marca.
+- **Menu/Eventos** com cards para casamento, 15 anos, batizado, formatura, datas comemorativas e primeira eucaristia.
+- **Nossa História** com fotos e efeito parallax em telas maiores.
+- **Fotos** com integração preparada para Instagram e fallback estático.
+- **Compre Online** com vitrine/carrossel de produtos.
+- **Depoimentos** com navegação por cards.
+- **Contato** com formulário orientado para orçamento.
+- **Faixa de atendimento** otimizada para leitura em smartphones.
+- **Rodapé** com contatos, links oficiais e créditos.
 
-## Alterações recentes
+## Tecnologias
 
-- Atualização da seção **Menu/Eventos** para exibir cards em grade com **2 linhas e 3 colunas** em telas largas.
-- Inclusão das imagens de eventos em `imagens/galeria/eventos/`.
-- Ajuste do parallax da seção **Nossa História**, combinando `css/nossa-historia.css` com `js/parallax-sobre.js`.
-- Intensificação do movimento parallax das fotos em desktop e tablet, mantendo o recurso desativado em mobile e para usuários com `prefers-reduced-motion`.
-- Reorganização dos cards da seção **Depoimentos**:
-  - imagem do texto do depoimento no topo;
-  - nome e cargo/profissão na parte inferior;
-  - remoção do avatar visual `.testimonial-card__avatar`.
-- Ajustes em `css/depoimentos.css` para garantir a ordem visual correta dos elementos nos cards.
+- HTML5 semântico
+- CSS3 modular por seção
+- JavaScript puro
+- Imagens otimizadas em `.webp` quando disponível
+- JSON-LD para dados estruturados
+- Endpoint serverless opcional para integração com Instagram
 
-## Melhorias aplicadas
+## Destaques Técnicos
 
-- SEO básico com `title`, `description`, `canonical`, Open Graph, Twitter Cards e dados estruturados JSON-LD.
-- Acessibilidade reforçada com `aria-label`, `aria-labelledby`, `aria-hidden` em elementos decorativos e labels ocultos no formulário.
-- Carregamento assíncrono de CSS não crítico para reduzir bloqueio de renderização.
-- Organização dos estilos por seção em arquivos CSS separados.
-- Uso de imagens otimizadas em `.webp` quando disponível.
+- Layout responsivo para desktop, tablet e mobile.
 - Menu mobile controlado por JavaScript.
-- Carrosséis e interações controlados por JavaScript puro.
-- Respeito à preferência de redução de movimento no efeito parallax.
+- Efeito parallax com `requestAnimationFrame`.
+- Respeito a `prefers-reduced-motion`.
+- CSS não crítico carregado de forma assíncrona.
+- Acessibilidade com `aria-label`, `aria-labelledby`, labels ocultos e foco visível.
+- SEO básico com `title`, `meta description`, canonical, Open Graph e Twitter Cards.
+- Formulário com validações, mensagens amigáveis e limpeza inteligente.
+- Feed do Instagram sem exposição de token no frontend.
+- Fallback estático para a galeria caso a API esteja indisponível.
 
-## Estrutura do projeto
+## Estrutura do Projeto
 
 ```text
 .
@@ -80,148 +79,37 @@ A página inicial inclui:
 │       └── depoimentos.js
 ├── fontes/
 └── imagens/
-    ├── banner-principal/
-    ├── banners/
-    │   ├── aspas-direita.png
-    │   ├── aspas-esquerda.png
-    │   ├── banner-lateral.webp
-    │   ├── banner-momentos.webp
-    │   └── texto-banner.webp
-    ├── galeria/
-    │   ├── compre-on-line/
-    │   │   ├── g20.webp
-    │   │   ├── g22.webp
-    │   │   ├── image14.webp
-    │   │   ├── image34.webp
-    │   │   ├── image54.webp
-    │   │   ├── path70.png
-    │   │   └── path71.png
-    │   ├── depoimentos/
-    │   │   ├── g96.webp
-    │   │   ├── g98.webp
-    │   │   ├── path209-removebg-preview.png
-    │   │   ├── path210-removebg-preview.png
-    │   │   └── text99.webp
-    │   ├── eventos/
-    │   │   ├── 15anosProvisoria.jpg
-    │   │   ├── Batizado.jpeg
-    │   │   ├── Casamento.jpg
-    │   │   ├── DatasComemorativas.jpg
-    │   │   ├── Formatura.jpeg
-    │   │   └── PrimeiraEucaristia.jpeg
-    │   ├── ficamos-felizes/
-    │   │   ├── gps.webp
-    │   │   ├── path265.webp
-    │   │   └── text265.webp
-    │   ├── formulario/
-    │   │   ├── IconesSiteDeLaFlor-01.png
-    │   │   ├── IconesSiteDeLaFlor-02.png
-    │   │   ├── IconesSiteDeLaFlor-03.png
-    │   │   ├── IconesSiteDeLaFlor-04.png
-    │   │   ├── IconesSiteDeLaFlor-05.png
-    │   │   ├── IconesSiteDeLaFlor-06.png
-    │   │   └── IconesSiteDeLaFlor-07.png
-    │   ├── fotos/
-    │   │   ├── docura-tradicao.png
-    │   │   ├── gotas-chocolate.png
-    │   │   ├── image254.webp
-    │   │   ├── image256.webp
-    │   │   └── image258.webp
-    │   ├── nossa-historia/
-    │   │   ├── FotosFamilia.png
-    │   │   └── path72.webp
-    │   └── rodape/
-    │       ├── IconesSiteDeLaFlor-08.png
-    │       ├── IconesSiteDeLaFlor-09.png
-    │       ├── IconesSiteDeLaFlor-10.png
-    │       ├── IconesSiteDeLaFlor-11.png
-    │       ├── IconesSiteDeLaFlor-12.png
-    │       ├── IconesSiteDeLaFlor-13.png
-    │       ├── IconesSiteDeLaFlor-14.png
-    │       ├── path203.webp
-    │       └── text294.png
-    └── logo/
-        ├── alfajor-peruano.webp
-        ├── fav-ico.ico
-        └── logo.webp
 ```
 
-## Arquivos principais
+## Arquivos Principais
 
-### `index.html`
+| Arquivo | Responsabilidade |
+| --- | --- |
+| `index.html` | Estrutura principal da página e seções do site. |
+| `css/variaveis.css` | Cores, variáveis e tokens globais. |
+| `css/secoes.css` | Seção de eventos/menu. |
+| `css/nossa-historia.css` | Layout da seção Nossa História. |
+| `css/fotos.css` | Layout da galeria de fotos. |
+| `css/compra-on-line.css` | Vitrine e carrossel de compra online. |
+| `css/depoimentos.css` | Cards, carrossel e controles dos depoimentos. |
+| `css/formulario.css` | Estilos do formulário de contato. |
+| `css/ficamos.css` | Faixa informativa de atendimento. |
+| `js/navegacao.js` | Menu mobile, botão voltar ao topo e formulário. |
+| `js/parallax-sobre.js` | Movimento parallax da seção Nossa História. |
+| `js/instagram-feed.js` | Consumo do feed público do Instagram. |
+| `api/instagram-feed.js` | Endpoint serverless seguro para buscar mídias do Instagram. |
 
-Arquivo principal do site. Contém a estrutura das seções:
+## Integração com Instagram
 
-- `#home` — banner principal;
-- `#menu` — eventos e serviços;
-- `#sobre` — Nossa História;
-- `#fotos` — galeria;
-- `#loja` — compra online;
-- `#depoimentos` — depoimentos;
-- `#contato` — formulário;
-- `.secao-visita` — faixa de atendimento;
-- `footer` — rodapé.
+A seção `#fotos` foi preparada para carregar automaticamente as 3 publicações mais recentes do Instagram por meio de um endpoint seguro.
 
-### `css/secoes.css`
+O frontend nunca recebe token de acesso. Ele apenas chama um endpoint público:
 
-Controla a seção de eventos/menu, incluindo os cards de eventos e o CTA de orçamento.
-
-### `css/nossa-historia.css`
-
-Controla o layout da seção Nossa História, a posição das fotos e o comportamento visual necessário para o parallax.
-
-### `js/parallax-sobre.js`
-
-Aplica o movimento parallax na imagem `.history-section__photos` dentro da seção `#sobre`.
-
-O script:
-
-- calcula o progresso de rolagem da seção;
-- aplica `translate3d` na imagem;
-- reduz custo de renderização usando `requestAnimationFrame`;
-- desativa o efeito em telas pequenas;
-- respeita `prefers-reduced-motion`.
-
-### `css/depoimentos.css`
-
-Controla a seção de depoimentos, carrossel, cards, setas, dots e a nova ordem visual dos elementos:
-
-1. texto do depoimento;
-2. linha divisória;
-3. nome e cargo/profissão.
-
-### `js/dados/compre-on-line.js`
-
-Arquivo de dados e comportamento da vitrine de produtos da seção de compra online.
-
-### `js/dados/depoimentos.js`
-
-Arquivo de dados e comportamento do carrossel de depoimentos.
-
-### `js/navegacao.js`
-
-Controla a navegação principal, menu mobile e interações de navegação.
-
-### `js/instagram-feed.js`
-
-Controla o carregamento da galeria relacionada ao Instagram. Ao abrir o site, o script consulta o endpoint configurado em `data-instagram-feed-endpoint` no container `#instagram-photos`. Se o atributo estiver vazio, usa `/api/instagram-feed`. Quando recebe mídias válidas, substitui os cards estáticos da seção `#fotos` pelas 3 publicações mais recentes. Se a rota falhar, demorar, retornar vazio ou estiver indisponível no ambiente local, os 3 cards estáticos do HTML permanecem visíveis.
-
-Exemplo para desenvolvimento local com backend em outra porta:
-
-```html
-<div
-  class="photos-section__grid"
-  id="instagram-photos"
-  aria-live="polite"
-  data-instagram-feed-endpoint="http://localhost:3333/api/instagram-feed"
->
+```js
+fetch('/api/instagram-feed')
 ```
 
-Em produção, deixe o atributo vazio ou remova o atributo para usar o padrão `/api/instagram-feed`.
-
-### `api/instagram-feed.js`
-
-Endpoint backend/serverless responsável por buscar as últimas mídias pela API oficial da Meta/Instagram e devolver apenas os dados públicos necessários para o frontend:
+O endpoint deve retornar:
 
 ```json
 [
@@ -234,109 +122,165 @@ Endpoint backend/serverless responsável por buscar as últimas mídias pela API
 ]
 ```
 
-O token de acesso não fica no HTML nem no JavaScript público. Ele deve existir somente no ambiente seguro do backend/serverless.
+Se a API falhar, retornar vazio ou estiver indisponível, os cards estáticos do HTML continuam visíveis.
 
-Variáveis de ambiente necessárias:
+### Endpoint Padrão
 
-- `INSTAGRAM_USER_ID`: ID da conta do Instagram Business/Creator conectada à Meta.
-- `INSTAGRAM_ACCESS_TOKEN`: token de acesso da API Graph com permissão para ler as mídias da conta.
-- `INSTAGRAM_GRAPH_API_VERSION`: opcional; quando ausente, usa `v23.0`.
-- `INSTAGRAM_ALLOWED_ORIGINS`: opcional; lista separada por vírgula para CORS em desenvolvimento. Quando ausente, permite `http://127.0.0.1:5500` e `http://localhost:5500`.
-
-Em hospedagem estática pura, crie uma função serverless ou backend equivalente respondendo em `/api/instagram-feed` com o mesmo formato acima. Sem esse endpoint, o site continua exibindo as imagens estáticas atuais como fallback.
-
-### `js/formulario.js`
-
-Controla comportamentos do formulário de contato.
-
-## Como testar localmente
-
-Abra `index.html` diretamente em um navegador moderno.
-
-Também é possível usar um servidor estático local:
-
-```bash
-python -m http.server 8000
-```
-
-Depois acesse:
+Em produção, o site usa:
 
 ```text
-http://localhost:8000
+/api/instagram-feed
 ```
 
-Com Live Server em `http://127.0.0.1:5500/index.html`, a rota `/api/instagram-feed` não executa `api/instagram-feed.js`, porque o Live Server serve apenas arquivos estáticos. Nesse cenário, o teste valida o fallback: os 3 cards estáticos da seção `#fotos` devem continuar aparecendo.
+O container da galeria pode definir um endpoint alternativo:
 
-Para testar a integração real em desenvolvimento, rode um backend/serverless local em outra porta e configure o atributo do HTML:
+```html
+<div
+  class="photos-section__grid"
+  id="instagram-photos"
+  aria-live="polite"
+  data-instagram-feed-endpoint=""
+>
+```
+
+Com o atributo vazio, o JavaScript usa `/api/instagram-feed`.
+
+### Teste com Backend Local
+
+Para testar fotos reais em desenvolvimento, rode um backend/serverless local e configure temporariamente:
 
 ```html
 data-instagram-feed-endpoint="http://localhost:3333/api/instagram-feed"
 ```
 
-Esse backend local deve ler `INSTAGRAM_USER_ID` e `INSTAGRAM_ACCESS_TOKEN` no ambiente seguro do servidor e devolver o JSON no formato documentado acima. Se o site estiver em `127.0.0.1:5500` e o backend em outra porta, o backend precisa responder CORS para essa origem. O endpoint `api/instagram-feed.js` já permite `http://127.0.0.1:5500` e `http://localhost:5500` por padrão, ou a lista definida em `INSTAGRAM_ALLOWED_ORIGINS`. Nenhum token deve ser colocado no HTML, no CSS ou no JavaScript público.
+Antes de publicar, deixe o atributo vazio novamente.
 
-Em produção, publique uma rota serverless/backend em `/api/instagram-feed` e deixe o atributo `data-instagram-feed-endpoint` vazio para usar o caminho padrão.
+### Variáveis de Ambiente
 
-## Checklist de validação
+O token deve existir apenas no backend/serverless:
+
+```text
+INSTAGRAM_USER_ID=
+INSTAGRAM_ACCESS_TOKEN=
+INSTAGRAM_GRAPH_API_VERSION=v23.0
+INSTAGRAM_ALLOWED_ORIGINS=http://127.0.0.1:5500,http://localhost:5500
+```
+
+`INSTAGRAM_ALLOWED_ORIGINS` é opcional. Quando ausente, o endpoint permite por padrão:
+
+- `http://127.0.0.1:5500`
+- `http://localhost:5500`
+
+## Como Rodar Localmente
+
+Este projeto não exige instalação de pacotes.
+
+### Opção 1: Live Server
+
+Abra o projeto com a extensão Live Server e acesse:
+
+```text
+http://127.0.0.1:5500/index.html
+```
+
+Nesse modo, o Live Server serve apenas arquivos estáticos. Ele não executa `api/instagram-feed.js`.
+
+Resultado esperado:
+
+- a seção de fotos mantém os 3 cards estáticos;
+- o restante do site funciona normalmente;
+- a integração real do Instagram não é executada.
+
+### Opção 2: Servidor Estático Simples
+
+```bash
+python -m http.server 8000
+```
+
+Acesse:
+
+```text
+http://localhost:8000
+```
+
+### Opção 3: Teste Real do Instagram
+
+Para carregar fotos reais:
+
+1. Rode um backend/serverless local em outra porta.
+2. Configure as variáveis de ambiente do Instagram no backend.
+3. Aponte `data-instagram-feed-endpoint` para o endpoint local.
+4. Abra o site pelo Live Server.
+5. Confirme que as 3 fotos recentes substituem os cards estáticos.
+
+## Checklist de Validação
 
 Antes de publicar, conferir:
 
-- abrir a home no navegador;
-- verificar responsividade em desktop, tablet e mobile;
-- testar menu mobile aberto e fechado;
-- verificar a seção de eventos em grade 2x3 no desktop;
-- verificar se as imagens de eventos carregam corretamente;
-- testar o parallax da seção Nossa História no desktop;
-- confirmar que o parallax não roda no mobile;
-- validar a ordem dos depoimentos: texto em cima e nome/cargo embaixo;
-- testar carrosséis de compra online e depoimentos;
-- testar links de Instagram, WhatsApp, e-mail e créditos;
-- testar formulário e campos obrigatórios;
-- verificar console do navegador;
-- revisar `title`, `meta description`, hierarquia de títulos e textos alternativos;
-- confirmar contraste, foco por teclado e labels ocultos.
+- home abre sem erro no navegador;
+- menu mobile abre e fecha corretamente;
+- links internos navegam para as seções certas;
+- seção de eventos mantém grade e responsividade;
+- parallax roda apenas em telas adequadas;
+- galeria mostra 3 fotos reais quando o endpoint está ativo;
+- galeria mantém fallback estático quando o endpoint falha;
+- formulário valida campos obrigatórios;
+- botão limpar informa quando o formulário está vazio;
+- faixa de visita está legível em smartphones;
+- carrosséis de compra online e depoimentos funcionam;
+- links de Instagram, WhatsApp, e-mail e créditos abrem corretamente;
+- console do navegador não mostra erros;
+- imagens têm `alt` adequado;
+- foco por teclado está visível;
+- HTML de produção não contém `localhost` fixo.
 
-## Notas de publicação
+## Publicação
 
-- O site está preparado para hospedagem estática.
-- Preserve a hierarquia de pastas ao mover o projeto.
-- Preserve nomes de arquivos, classes, IDs, âncoras e caminhos de imagens já em uso.
-- Evite renomear imagens sem atualizar todos os caminhos no HTML, CSS e JavaScript.
-- Após substituir arquivos CSS ou JS em produção, limpe o cache do navegador ou force atualização com `Ctrl + F5`.
-- Caso adicione novas fontes, confirme as licenças antes de publicar.
-- Não faça deploy ou alteração de hospedagem sem confirmação.
+O site pode ser publicado como estático, mas a integração real do Instagram exige uma camada backend/serverless.
 
-## Links oficiais
+Em plataformas compatíveis com a pasta `api/`, como Vercel, o arquivo:
+
+```text
+api/instagram-feed.js
+```
+
+pode funcionar como rota:
+
+```text
+/api/instagram-feed
+```
+
+Em hospedagens puramente estáticas, crie uma função serverless ou backend separado com o mesmo contrato de resposta.
+
+## Segurança
+
+- Nunca colocar `INSTAGRAM_ACCESS_TOKEN` no HTML, CSS ou JavaScript público.
+- Não expor dados sensíveis em logs ou mensagens para o usuário.
+- Manter mensagens de erro amigáveis no frontend.
+- Usar CORS apenas para origens conhecidas em desenvolvimento.
+- Antes de publicar, revisar o HTML para garantir que `data-instagram-feed-endpoint` está vazio.
+
+## Links Oficiais
 
 - Instagram: <https://www.instagram.com/alfajordelaflor/>
 - WhatsApp: <https://wa.me/message/VJUYK3MDBN3VM1/>
 - Crédito de layout/design: <https://www.instagram.com/estudiofablo/>
 - Crédito de WebDesign/Programação: <https://luizgustavodev.com/>
 
-## Desenvolvimento
-
-Este projeto não depende de instalação de pacotes.
+## Manutenção
 
 Fluxo recomendado:
 
-1. editar os arquivos diretamente;
-2. testar com Live Server ou `python -m http.server 8000`;
-3. validar responsividade;
-4. revisar console do navegador;
-5. fazer commit com uma descrição clara das alterações.
+1. Editar os arquivos diretamente.
+2. Testar com Live Server ou `python -m http.server 8000`.
+3. Validar responsividade no DevTools.
+4. Revisar console do navegador.
+5. Confirmar fallback da galeria.
+6. Fazer commit com uma mensagem objetiva.
 
-Exemplo de commit para a alteração dos depoimentos:
+Exemplo:
 
 ```bash
-git add index.html css/depoimentos.css imagens/galeria/depoimentos/
-git commit -m "style: inverte layout dos depoimentos"
+git add index.html css js api README.md
+git commit -m "feat: melhora site institucional da De La Flor"
 ```
-
-## Observações de segurança e manutenção
-
-- Não expor dados sensíveis em HTML, JavaScript, comentários ou mensagens de erro.
-- Não usar mensagens técnicas cruas para usuário final.
-- Evitar dependências externas sem necessidade.
-- Manter arquivos de imagem otimizados para reduzir tempo de carregamento.
-- Conferir caminhos relativos sempre que mover arquivos entre pastas.
-- Validar acessibilidade sempre que alterar ordem visual de elementos.
