@@ -1,9 +1,15 @@
 const instagramEndpoint = "/api/instagram-feed";
+const instagramProfileUrl = "https://www.instagram.com/alfajordelaflor/";
 const instagramMaxItems = 3;
 
 const getConfiguredInstagramEndpoint = (grid) => {
   const configuredEndpoint = grid.dataset.instagramFeedEndpoint?.trim();
   return configuredEndpoint || instagramEndpoint;
+};
+
+const getConfiguredInstagramProfileUrl = (grid) => {
+  const configuredProfileUrl = grid.dataset.instagramProfileUrl?.trim();
+  return configuredProfileUrl || instagramProfileUrl;
 };
 
 const getInstagramAltText = (item) => {
@@ -96,6 +102,23 @@ const renderInstagramFeed = (grid, items) => {
   grid.replaceChildren(...articles);
 };
 
+const updateFallbackInstagramLinks = (grid) => {
+  const profileUrl = getConfiguredInstagramProfileUrl(grid);
+
+  if (!isValidInstagramUrl(profileUrl)) {
+    return;
+  }
+
+  const links = grid.querySelectorAll(".photos-section__link");
+
+  links.forEach((link) => {
+    link.href = profileUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", "Ver a De La Flor no Instagram");
+  });
+};
+
 const initInstagramFeed = async () => {
   const instagramGrid = document.querySelector("#instagram-photos");
 
@@ -103,8 +126,12 @@ const initInstagramFeed = async () => {
     return;
   }
 
+  updateFallbackInstagramLinks(instagramGrid);
+
   try {
     // Configure este endpoint no backend/serverless. O token do Instagram nunca deve ir para o frontend.
+    // O endpoint deve retornar um JSON com no máximo os posts necessários no formato:
+    // [{ imageUrl, permalink, caption, timestamp }]
     const endpoint = getConfiguredInstagramEndpoint(instagramGrid);
     const items = await fetchInstagramFeed(endpoint);
     renderInstagramFeed(instagramGrid, items);
