@@ -99,7 +99,7 @@
   justify-content: center;
   z-index: 2;
   box-sizing: border-box;
-  width: clamp(237px, 21.95vw, 318px);
+  width: clamp(274px, 25.4vw, 378px);
   height: clamp(56px, 5.2vw, 76px);
   padding: 0 28px;
   border: 2px solid rgba(255, 255, 255, 0.92);
@@ -107,7 +107,7 @@
   background-color: rgba(255, 255, 255, 0.92);
   color: #7b2926;
   font-family: "Lato", sans-serif;
-  font-size: clamp(25px, 2.2vw, 32px);
+  font-size: clamp(20px, 1.9vw, 29px);
   font-weight: 900;
   line-height: 1;
   text-align: center;
