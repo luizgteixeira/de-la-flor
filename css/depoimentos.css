@@ -237,7 +237,6 @@
 
 .testimonial-card__name,
 .testimonial-card__role,
-.testimonial-card__tag,
 .testimonial-card__text {
   display: block;
 }
@@ -260,22 +259,6 @@
   text-align: left;
 }
 
-.testimonial-card__tag {
-  width: max-content;
-  max-width: 100%;
-  margin-top: 8px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background-color: rgba(86, 3, 3, 0.08);
-  color: #7b2926;
-  font-family: "Lato", Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
 .testimonial-card__divider {
   order: 2;
   display: block;
@@ -288,7 +271,7 @@
 .testimonial-card__text {
   order: 1;
   width: 100%;
-  min-height: 244px;
+  min-height: 268px;
   margin: 0;
   color: #560303;
   font-family: "Lato", Arial, sans-serif;
