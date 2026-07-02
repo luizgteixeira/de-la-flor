@@ -56,6 +56,21 @@ const contatoTelefone = contatoForm
   : null;
 let contatoStatusTimeoutId = null;
 
+const contatoFieldLabels = {
+  nome: 'Nome completo',
+  email: 'Email',
+  tipo_evento: 'Tipo de evento',
+  data_local: 'Data, cidade e local',
+  cerimonial: 'Cerimonial ou produtora',
+  telefone: 'Telefone ou WhatsApp',
+  comentario: 'Comentário',
+};
+
+const getContatoFieldLabel = (input) => {
+  const fieldName = input.getAttribute('name');
+  return contatoFieldLabels[fieldName] || input.getAttribute('aria-label') || 'Campo';
+};
+
 const getErrorMessage = (input) => {
   if (input.validity.valueMissing) {
     return 'Este campo é obrigatório.';
@@ -86,6 +101,7 @@ const clearContatoStatus = () => {
 
   if (contatoStatus) {
     contatoStatus.textContent = '';
+    contatoStatus.classList.remove('form-contato__status--visible');
   }
 };
 
@@ -96,8 +112,10 @@ const showTemporaryContatoStatus = (message) => {
 
   clearContatoStatus();
   contatoStatus.textContent = message;
+  contatoStatus.classList.add('form-contato__status--visible');
   contatoStatusTimeoutId = window.setTimeout(() => {
     contatoStatus.textContent = '';
+    contatoStatus.classList.remove('form-contato__status--visible');
     contatoStatusTimeoutId = null;
   }, 4500);
 };
@@ -162,6 +180,7 @@ const showContatoSuccess = () => {
   const nome = contatoForm.querySelector('#nome')?.value.trim();
   const nomeMensagem = nome ? ` ${nome}` : '';
   contatoStatus.textContent = `Informações enviadas com sucesso! Obrigado por entrar em contato conosco${nomeMensagem}`;
+  contatoStatus.classList.add('form-contato__status--visible');
 };
 
 const formatTelefone = (value) => {
@@ -193,6 +212,12 @@ const validateContatoForm = () => {
   if (hasError) {
     const firstError = contatoFields.find((input) => !input.validity.valid);
     if (firstError) {
+      const fieldLabel = getContatoFieldLabel(firstError);
+      const message = firstError.validity.valueMissing
+        ? `Para enviar, preencha o campo obrigatório: ${fieldLabel}.`
+        : getErrorMessage(firstError);
+
+      showTemporaryContatoStatus(message);
       firstError.focus();
     }
     return false;
