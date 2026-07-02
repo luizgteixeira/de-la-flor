@@ -154,7 +154,7 @@
 .back-to-top {
   position: fixed;
   right: clamp(18px, 2.4vw, 34px);
-  bottom: clamp(18px, 2.4vw, 34px);
+  bottom: clamp(78px, 7vw, 104px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
